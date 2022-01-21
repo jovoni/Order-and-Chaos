@@ -1,3 +1,3 @@
 language: java
-before_install: chmod +x gradlew
+#before_install: gradlew
 jdk: openjdk-15
