@@ -1,3 +1,3 @@
 # Order-and-Chaos
 
-Project for the sowftware development exam.
+Project for the software development exam.
