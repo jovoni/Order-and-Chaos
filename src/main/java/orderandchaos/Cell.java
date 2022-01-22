@@ -14,7 +14,7 @@ public class Cell {
         return occupied;
     }
 
-    public Piece getSign() {
+    public Piece getPiece() {
         if (isOccupied()) {
             return this.piece;
         }

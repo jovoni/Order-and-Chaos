@@ -1,9 +1,10 @@
 package orderandchaos;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestCell {
@@ -11,7 +12,7 @@ public class TestCell {
     private final Cell cell = new Cell(position);
 
     @Test
-    void Instantiate() {
+    void testInstantiate() {
         assertFalse(cell.isOccupied());
     }
 
@@ -20,19 +21,10 @@ public class TestCell {
         assertEquals(position, cell.getPosition());
     }
 
-    @Test
-    void testPieceX() {
-        Piece piece = Piece.X;
-        Piece expected = Piece.X;
+    @ParameterizedTest
+    @EnumSource(value=Piece.class, names={"X", "O"})
+    void testPiece(Piece piece) {
         cell.placePiece(piece);
-        assertEquals(expected, cell.getSign());
-    }
-
-    @Test
-    void testPieceO() {
-        Piece piece = Piece.O;
-        Piece expected = Piece.O;
-        cell.placePiece(piece);
-        assertEquals(expected, cell.getSign());
+        assertEquals(piece, cell.getPiece());
     }
 }
