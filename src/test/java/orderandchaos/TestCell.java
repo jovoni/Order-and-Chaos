@@ -15,14 +15,13 @@ public class TestCell {
     }
 
 
-    public class TestPosition {
-        @Test
-        void getPosition() {
-            Position position = new Position(3, 4);
-            Cell cell = new Cell(position);
-            Assertions.assertEquals(position, cell.getPosition());
-
-        }
+    @Test
+    void getPosition() {
+        Position position = new Position(3, 4);
+        Cell cell = new Cell(position);
+        Assertions.assertEquals(position, cell.getPosition());
 
     }
+
+
 }
