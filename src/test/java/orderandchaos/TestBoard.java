@@ -8,7 +8,7 @@ public class TestBoard {
     @Test
     void checkDimension() {
         Board board = new Board();
-        int expected = 6;
+        int expected = 36;
         assertEquals(board.size(), expected);
     }
 
