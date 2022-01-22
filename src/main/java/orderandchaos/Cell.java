@@ -14,9 +14,6 @@ public class Cell {
         return isOccupied;
     }
 
-    public Position getPosition() {
-        Position k = new Position(2,3);
-        return k;
-    }
+    public Position getPosition() {return position;}
 
 }
