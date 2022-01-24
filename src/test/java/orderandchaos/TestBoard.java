@@ -12,4 +12,13 @@ public class TestBoard {
         assertEquals(board.size(), expected);
     }
 
+    @Test
+    void checkPiece(){
+        Board board = new Board();
+        Position position = new Position(4, 4);
+        board.getCellAt(position).placePiece(Piece.X);
+        assertEquals(board.getCellAt(position).getPiece(), Piece.X);
+
+    }
+
 }

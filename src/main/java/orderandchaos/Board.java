@@ -20,7 +20,7 @@ public class Board extends HashSet<Cell> {
 
     public Cell getCellAt(Position position) {
         return this.stream()
-                .filter(c -> c.getPosition() == position)
+                .filter(c -> c.getPosition().equals(position))
                 .findFirst()
                 .orElse(null);
     }
