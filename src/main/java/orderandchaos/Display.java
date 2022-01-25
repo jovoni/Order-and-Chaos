@@ -11,11 +11,11 @@ public class Display {
         for (int i = 6; i>0; i--){
             for(int j = 1; j <= 6; j++){
                 Cell cell = board.getCellAt(new Position(i,j));
-                if(cell.isOccupied()){
-                    System.out.println("[]");
+                if(!cell.isOccupied()){
+                    System.out.print("[]");
                 }
                 else{
-                    System.out.println(cell.getPiece());
+                    System.out.print(cell.getPiece());
                 }
             }
             System.out.println();
