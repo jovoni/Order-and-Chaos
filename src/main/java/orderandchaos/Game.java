@@ -2,6 +2,7 @@ package orderandchaos;
 
 import java.util.Scanner;
 
+
 public class Game {
     protected Board board ;
     protected final Player order ;
@@ -17,15 +18,28 @@ public class Game {
         board.getCellAt(position).placePiece(piece);
     }
 
-    public Position AskPosition(){
-        System.out.println("Insert position x");
-        Scanner myInput = new Scanner( System.in );
-        int x = myInput.nextInt();
-        System.out.println("Insert position y");
-        int y = myInput.nextInt();
-        return new Position(x,y);
-        // add check dimension
+//    public Position AskPosition() throws NonValidPosException {
+//        System.out.println("Insert position x");
+//        Scanner myInput = new Scanner(System.in);
+//        int x = myInput.nextInt();
+//        System.out.println("Insert position y");
+//        int y = myInput.nextInt();
+//
+//        if (x > 6 || y > 6 || x < 1 || y < 1) {
+//            throw new NonValidPosException("Not valid Position");
+//        }
+//
+//            return new Position(x,y);
+//
+//        }
+
+
+    public static class NonValidPosException extends Exception {
+
+        public NonValidPosException(String message) {
+        super(message);
     }
+}
 
     public Piece AskPiece(){
         Piece p = null;
