@@ -13,12 +13,7 @@ public class Main {
         Position position = game.AskPosition();
         Piece piece = game.AskPiece();
         game.MakeMove(position, piece);
-
         display.PrintBoard();
-
-
-
-
     }
 
     
