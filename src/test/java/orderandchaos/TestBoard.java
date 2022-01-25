@@ -13,7 +13,7 @@ public class TestBoard {
     }
 
     @Test
-    void checkPiece(){
+    void checkPiece() throws Cell.PosAlreadyOccupiedException {
         Position position = new Position(4, 4);
         board.getCellAt(position).placePiece(Piece.X);
         assertEquals(board.getCellAt(position).getPiece(), Piece.X);

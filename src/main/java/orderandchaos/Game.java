@@ -18,7 +18,7 @@ public class Game {
         this.board = new Board();
     }
 
-    public void MakeMove(Position position, Piece piece){
+    public void MakeMove(Position position, Piece piece) throws Cell.PosAlreadyOccupiedException {
         board.getCellAt(position).placePiece(piece);
     }
 
@@ -41,13 +41,7 @@ public class Game {
         }
     }
 
-
-
-
-
-
-    public Piece AskPiece() throws NonValidPieceException{
-
+    public Piece AskPiece() throws NonValidPieceException {
         System.out.println("Insert piece");
 
         Scanner myInput = new Scanner( System.in );
@@ -56,8 +50,6 @@ public class Game {
             throw new NonValidPieceException("Giovanni Santacatterina");
         }
 
-        Piece p = Piece.valueOf(piece);
-
-        return p;
+        return Piece.valueOf(piece);
     }
 }
