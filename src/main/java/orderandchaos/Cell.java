@@ -17,8 +17,7 @@ public class Cell {
     public Piece getPiece() {
         if (isOccupied()) {
             return this.piece;
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -27,9 +26,17 @@ public class Cell {
         return position;
     }
 
-    public void placePiece(Piece piece) {
+    public void placePiece(Piece piece) throws PosAlreadyOccupiedException {
+        if (this.occupied) {throw new PosAlreadyOccupiedException("");}
         this.piece = piece;
         this.occupied = true;
     }
+
+    public static class PosAlreadyOccupiedException extends Exception {
+        public PosAlreadyOccupiedException(String message) {
+            super(message);
+        }
+    }
+
 
 }
