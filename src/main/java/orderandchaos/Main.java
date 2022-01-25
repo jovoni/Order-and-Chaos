@@ -10,11 +10,21 @@ public class Main {
 
         Game game = new Game();
         Display display = new Display(game.board);
-        Position position = game.AskPosition();
-        Piece piece = game.AskPiece();
-        game.MakeMove(position, piece);
-        display.PrintBoard();
-    }
 
-    
+        int n_turn = 0;
+        boolean orderHasWon = false;
+        while (!orderHasWon && n_turn <= 36) {
+            Position position = game.AskPosition();
+            Piece piece = game.AskPiece();
+            game.MakeMove(position, piece);
+            display.PrintBoard();
+            orderHasWon = game.hasOrderWon(position, piece);
+        }
+
+        if (orderHasWon) {
+            System.out.println("order won :)");
+        } else {
+            System.out.println("chaos won :)");
+        }
+    }
 }

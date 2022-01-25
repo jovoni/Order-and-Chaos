@@ -52,4 +52,127 @@ public class Game {
 
         return Piece.valueOf(piece);
     }
+
+    public boolean hasOrderWon(Position position, Piece piece) {
+        int x = position.getX();
+        int y = position.getY();
+
+        // look up and down
+        int in_a_row = 1;
+        boolean added = true;
+        while (y > 1 && added) {
+            y = y - 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        added = true;
+        while (y < 6 && added) {
+            y = y + 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        if (in_a_row == 5) return true;
+
+        // look left and rigth
+        in_a_row = 1;
+        added = true;
+        while (x > 1 && added) {
+            x = x - 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        added = true;
+        while (x < 6 && added) {
+            x = x + 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        if (in_a_row == 5) return true;
+
+        // look north-east, south-west
+        in_a_row = 1;
+        added = true;
+        while (x < 6 && y > 1 && added) {
+            y = y - 1;
+            x = x + 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        added = true;
+        while (x > 1 && y < 6 && added) {
+            y = y + 1;
+            x = x - 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        if (in_a_row == 5) return true;
+
+        // look north-west, south-east
+        in_a_row = 1;
+        added = true;
+        while (x > 1 && y > 1 && added) {
+            y = y - 1;
+            x = x - 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        added = true;
+        while (x < 1 && y < 6 && added) {
+            y = y + 1;
+            x = x + 1;
+            Position upperPosition = new Position(x,y);
+            Piece upperPiece = board.getCellAt(upperPosition).getPiece();
+            if (upperPiece == piece) {
+                in_a_row += 1;
+            } else {
+                added = false;
+            }
+        }
+
+        if (in_a_row == 5) return true;
+
+        return false;
+    }
 }
