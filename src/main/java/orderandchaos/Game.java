@@ -12,7 +12,7 @@ public class Game {
     protected final Player order ;
     protected final Player chaos ;
 
-    public Game(Player order, Player chaos) {
+    public Game() {
         this.order = Player.Order;
         this.chaos = Player.Chaos;
         this.board = new Board();
