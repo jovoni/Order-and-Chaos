@@ -1,7 +1,12 @@
 package orderandchaos;
 
 public class Display {
-    public void PrintBoard(Board board){
+    private Board board;
+
+    public Display(Board board){
+        this.board = board;
+    }
+    public void PrintBoard(){
         System.out.println();
         for (int i = 6; i>0; i--){
             for(int j = 1; j <= 6; j++){
