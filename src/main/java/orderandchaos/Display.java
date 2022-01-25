@@ -7,7 +7,7 @@ public class Display {
             for(int j = 1; j <= 6; j++){
                 Cell cell = board.getCellAt(new Position(i,j));
                 if(cell.isOccupied()){
-                    System.out.println("*");
+                    System.out.println("[]");
                 }
                 else{
                     System.out.println(cell.getPiece());
