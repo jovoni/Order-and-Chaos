@@ -12,9 +12,7 @@ import java.io.ByteArrayInputStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestGame {
-    private final Player order = Player.Order;
-    private final Player chaos = Player.Chaos;
-    private final Game game = new Game(order, chaos);
+    private final Game game = new Game();
 
     @ParameterizedTest
     @ValueSource(strings = {"X", "O"})
