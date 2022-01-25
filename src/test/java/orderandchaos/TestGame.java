@@ -1,6 +1,7 @@
 package orderandchaos;
 
 import orderandchaos.Exceptions.NonIntegerException;
+import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,13 +16,13 @@ public class TestGame {
     private final Player chaos = Player.Chaos;
     private final Game game = new Game(order, chaos);
 
-    @ParameterizedTest
-    @ValueSource(strings = {"X", "O"})
-    void testInputPiece(String expected) {
-        System.setIn(new ByteArrayInputStream(expected.getBytes()));
-        Piece exp_piece = Piece.valueOf(expected);
-        assertEquals(exp_piece, game.AskPiece());
-    }
+//    @ParameterizedTest
+//    @ValueSource(strings = {"X", "O"})
+//    void testInputPiece(String expected) {
+//        System.setIn(new ByteArrayInputStream(expected.getBytes()));
+//        Piece exp_piece = Piece.valueOf(expected);
+//        assertEquals(exp_piece, game.AskPiece());
+//    }
 
     @ParameterizedTest
     @CsvSource({"5,5,false", "10,7,true", "ciao,2,true"})
@@ -46,6 +47,21 @@ public class TestGame {
 
         Position position = new Position(Integer.parseInt(x), Integer.parseInt(y));
         assertEquals(position, game.AskPosition());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"X, false","O,false","Ciao,true"})
+    public void testInputPiece(String piece, Boolean expected) throws NonValidPieceException {
+        String simulatedUserInput = piece;
+        System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
+
+        boolean thrown = false;
+        try {
+            game.AskPiece();
+        } catch (NonValidPieceException e ) {
+            thrown = true;
+        }
+        assertEquals(thrown, expected);
     }
 }
 

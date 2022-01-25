@@ -1,6 +1,7 @@
 package orderandchaos;
 
 import orderandchaos.Exceptions.NonIntegerException;
+import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 
 import java.util.Scanner;
@@ -45,20 +46,18 @@ public class Game {
 
 
 
-    public Piece AskPiece(){
-        Piece p = null;
-        do {
-            System.out.println("Insert piece");
-            Scanner myInput = new Scanner( System.in );
-            String piece = myInput.next();
+    public Piece AskPiece() throws NonValidPieceException{
 
-            if (piece.equals("X")) {
-                p = Piece.X;
-            } else if (piece.equals("O")) {
-                p = Piece.O;
-            }
+        System.out.println("Insert piece");
+
+        Scanner myInput = new Scanner( System.in );
+        String piece = myInput.next();
+        if(!(piece.equals("X") || piece.equals("O"))){
+            throw new NonValidPieceException("Giovanni Santacatterina");
         }
-        while(p == null);
+
+        Piece p = Piece.valueOf(piece);
+
         return p;
     }
 }
