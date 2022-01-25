@@ -54,8 +54,8 @@ public class Game {
     }
 
     public boolean hasOrderWon(Position position, Piece piece) {
-        int x = position.getX();
-        int y = position.getY();
+        int y = position.getX();
+        int x = position.getY();
 
         // look up and down
         int in_a_row = 1;
@@ -71,6 +71,11 @@ public class Game {
             }
         }
 
+        System.out.println("up: " + in_a_row);
+
+        y = position.getX();
+        x = position.getY();
+
         added = true;
         while (y < 6 && added) {
             y = y + 1;
@@ -83,7 +88,12 @@ public class Game {
             }
         }
 
+        System.out.println("up and down: " + in_a_row);
+
         if (in_a_row == 5) return true;
+
+        y = position.getX();
+        x = position.getY();
 
         // look left and rigth
         in_a_row = 1;
@@ -99,6 +109,9 @@ public class Game {
             }
         }
 
+        y = position.getX();
+        x = position.getY();
+
         added = true;
         while (x < 6 && added) {
             x = x + 1;
@@ -111,7 +124,11 @@ public class Game {
             }
         }
 
+        System.out.println("left and right: " + in_a_row);
         if (in_a_row == 5) return true;
+
+        y = position.getX();
+        x = position.getY();
 
         // look north-east, south-west
         in_a_row = 1;
@@ -128,6 +145,9 @@ public class Game {
             }
         }
 
+        y = position.getX();
+        x = position.getY();
+
         added = true;
         while (x > 1 && y < 6 && added) {
             y = y + 1;
@@ -141,7 +161,11 @@ public class Game {
             }
         }
 
+        System.out.println("sw and ne: " + in_a_row);
         if (in_a_row == 5) return true;
+
+        y = position.getX();
+        x = position.getY();
 
         // look north-west, south-east
         in_a_row = 1;
@@ -158,6 +182,9 @@ public class Game {
             }
         }
 
+        y = position.getX();
+        x = position.getY();
+
         added = true;
         while (x < 1 && y < 6 && added) {
             y = y + 1;
@@ -170,7 +197,7 @@ public class Game {
                 added = false;
             }
         }
-
+        System.out.println("se and nw: " + in_a_row);
         if (in_a_row == 5) return true;
 
         return false;
