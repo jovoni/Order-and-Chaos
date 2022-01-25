@@ -1,5 +1,7 @@
 package orderandchaos;
 
+import orderandchaos.Exceptions.NonIntegerException;
+import orderandchaos.Exceptions.NonValidPosException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -23,14 +25,14 @@ public class TestGame {
 
     @ParameterizedTest
     @CsvSource({"5,5,false", "10,7,true", "ciao,2,true"})
-    public void testPositionThrowsException(String x, String y, Boolean expected) throws Game.NonValidPosException {
+    public void testPositionThrowsException(String x, String y, Boolean expected) throws NonValidPosException {
         String simulatedUserInput = x + System.getProperty("line.separator") + y;
         System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
 
         boolean thrown = false;
         try {
             game.AskPosition();
-        } catch (Game.NonValidPosException | Game.NonIntegerException e ) {
+        } catch (NonValidPosException | NonIntegerException e ) {
             thrown = true;
         }
         assertEquals(thrown, expected);
@@ -38,7 +40,7 @@ public class TestGame {
 
     @ParameterizedTest
     @CsvSource({"1,1", "6,6", "6,1", "4,3"})
-    public void testInputPosition(String x, String y) throws Game.NonValidPosException, Game.NonIntegerException {
+    public void testInputPosition(String x, String y) throws NonValidPosException, NonIntegerException {
         String simulatedUserInput = x + System.getProperty("line.separator") + y;
         System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
 

@@ -1,5 +1,8 @@
 package orderandchaos;
 
+import orderandchaos.Exceptions.NonIntegerException;
+import orderandchaos.Exceptions.NonValidPosException;
+
 import java.util.Scanner;
 
 
@@ -37,25 +40,10 @@ public class Game {
         }
     }
 
-    public static Integer tryParse(String text) {
-        try {
-            return Integer.parseInt(text);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
 
-    public static class NonIntegerException extends Exception {
-        public NonIntegerException(Exception ex) {
-            super(ex);
-        }
-    }
 
-    public static class NonValidPosException extends Exception {
-        public NonValidPosException(String message) {
-            super(message);
-        }
-    }
+
+
 
     public Piece AskPiece(){
         Piece p = null;
