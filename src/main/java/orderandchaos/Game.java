@@ -18,28 +18,44 @@ public class Game {
         board.getCellAt(position).placePiece(piece);
     }
 
-//    public Position AskPosition() throws NonValidPosException {
-//        System.out.println("Insert position x");
-//        Scanner myInput = new Scanner(System.in);
-//        int x = myInput.nextInt();
-//        System.out.println("Insert position y");
-//        int y = myInput.nextInt();
-//
-//        if (x > 6 || y > 6 || x < 1 || y < 1) {
-//            throw new NonValidPosException("Not valid Position");
-//        }
-//
-//            return new Position(x,y);
-//
-//        }
+    public Position AskPosition() throws NonValidPosException, NonIntegerException {
+        System.out.println("Insert position x");
+        Scanner myInput = new Scanner(System.in);
+        String x_s = myInput.next();
+        System.out.println("Insert position y");
+        String y_s = myInput.next();
 
+        try {
+            int x = Integer.parseInt(x_s);
+            int y = Integer.parseInt(y_s);
+            if (x > 6 || y > 6 || x < 1 || y < 1) {
+                throw new NonValidPosException("Not valid Position");
+            }
+            return new Position(x,y);
+        } catch (NumberFormatException e) {
+            throw new NonIntegerException(e);
+        }
+    }
+
+    public static Integer tryParse(String text) {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    public static class NonIntegerException extends Exception {
+        public NonIntegerException(Exception ex) {
+            super(ex);
+        }
+    }
 
     public static class NonValidPosException extends Exception {
-
         public NonValidPosException(String message) {
-        super(message);
+            super(message);
+        }
     }
-}
 
     public Piece AskPiece(){
         Piece p = null;
