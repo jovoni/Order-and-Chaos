@@ -55,9 +55,13 @@ public class Game {
         }
     }
 
-    public boolean canWin(int x){
+    public int canWin(int x){
         int y = 1;
         Piece currentPiece = board.getCellAt(new Position(x, y)).getPiece();
+        Piece lastPiece = board.getCellAt(new Position(x, y + 5)).getPiece();
+        if(currentPiece.equals(lastPiece)){
+            return 2;
+        }
         Boolean goOn = true;
         y +=1;
         int end = 5;
@@ -66,16 +70,22 @@ public class Game {
             currentPiece = newPiece;
             end = 6;
         }
+        int streak = 1;
         while (goOn && y <= end){
             y+=1;
             newPiece = board.getCellAt(new Position(x, y)).getPiece();
             if(!newPiece.equals(currentPiece) && !newPiece.equals(null)){
                 goOn = false;
             }
+            else if(!newPiece.equals(null)) streak +=1;
 
         }
 
-        return goOn;
+        if(!goOn) return 2;
+
+        if(streak == 5) return 1;
+        else return 0;
+
     }
     public boolean hasOrderWon(Position position, Piece piece) {
         int y = position.getX();
