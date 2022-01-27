@@ -45,7 +45,7 @@ public class TestGame {
         boolean thrown = false;
         try {
             game.AskPosition();
-        } catch (NonValidPosException | NonIntegerException e) {
+        } catch (NonValidPosException | NumberFormatException e) {
             thrown = true;
         }
         assertEquals(thrown, expected);

@@ -1,11 +1,9 @@
 package orderandchaos;
 
-import orderandchaos.Exceptions.NonIntegerException;
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 
 import java.util.Scanner;
-
 
 public class Game {
     protected Board board ;
@@ -18,17 +16,18 @@ public class Game {
         this.board = new Board();
     }
 
-    public void MakeMove(Position position, Piece piece) throws Cell.PosAlreadyOccupiedException {
-        board.getCellAt(position).placePiece(piece);
+    public void MakeMove(Position inputPosition, Piece inputPiece) throws Cell.PosAlreadyOccupiedException {
+
+
+        board.getCellAt(inputPosition).placePiece(inputPiece);
     }
 
-    public Position AskPosition() throws NonValidPosException, NonIntegerException {
+    public static Position AskPosition() throws NonValidPosException{
         System.out.println("Insert position x");
         Scanner myInput = new Scanner(System.in);
         String x_s = myInput.next();
         System.out.println("Insert position y");
         String y_s = myInput.next();
-
         try {
             int x = Integer.parseInt(x_s);
             int y = Integer.parseInt(y_s);
@@ -36,21 +35,28 @@ public class Game {
                 throw new NonValidPosException("Not valid Position");
             }
             return new Position(x,y);
-        } catch (NumberFormatException e) {
-            throw new NonIntegerException(e);
+        }catch (NonValidPosException | NumberFormatException e){
+            return AskPosition();
         }
+
+
     }
 
-    public Piece AskPiece() throws NonValidPieceException {
+    public static Piece AskPiece() throws NonValidPieceException {
         System.out.println("Insert piece");
 
         Scanner myInput = new Scanner( System.in );
         String piece = myInput.next();
-        if(!(piece.equals("X") || piece.equals("O"))){
-            throw new NonValidPieceException("Giovanni Santacatterina");
+        try {
+            if (!(piece.equals("X") || piece.equals("O"))) {
+                throw new NonValidPieceException("Giovanni Santacatterina");
+            }
+            return Piece.valueOf(piece);
+        } catch(NonValidPieceException e){
+            return AskPiece();
         }
 
-        return Piece.valueOf(piece);
+
     }
 
     public boolean hasOrderWon(Position position, Piece piece) {

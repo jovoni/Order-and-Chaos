@@ -14,11 +14,11 @@ public class Main {
         int n_turn = 0;
         boolean orderHasWon = false;
         while (!orderHasWon && n_turn <= 36) {
-            Position position = game.AskPosition();
-            Piece piece = game.AskPiece();
-            game.MakeMove(position, piece);
+            Position inputPosition = Game.AskPosition();
+            Piece inputPiece = Game.AskPiece();
+            game.MakeMove(inputPosition, inputPiece);
             display.PrintBoard();
-            orderHasWon = game.hasOrderWon(position, piece);
+            orderHasWon = game.hasOrderWon(inputPosition, inputPiece);
         }
 
         if (orderHasWon) {
