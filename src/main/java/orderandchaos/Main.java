@@ -14,7 +14,7 @@ public class Main {
         while (!orderHasWon && !game.board.isFull()) {
             game.MakeMove();
             display.PrintBoard();
-            orderHasWon = false; //game.hasOrderWon(inputPosition, inputPiece);
+            // game.hasOrderWon();
         }
 
         if (orderHasWon) {

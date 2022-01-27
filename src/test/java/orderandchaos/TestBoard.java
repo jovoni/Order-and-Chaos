@@ -1,6 +1,9 @@
 package orderandchaos;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBoard {
@@ -19,13 +22,16 @@ public class TestBoard {
         assertEquals(board.getCellAt(position).getPiece(), Piece.X);
     }
 
-    @Test
-    void checkFullBoard() throws Cell.PosAlreadyOccupiedException {
-        for (int i = 1; i<=6; i++) {
-            for (int j = 1; j <= 6; j++) {
-                board.getCellAt(new Position(i, j)).placePiece(Piece.X);
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void checkFullBoard(boolean full) throws Cell.PosAlreadyOccupiedException {
+        if (full) {
+            for (int i = 1; i <= 6; i++) {
+                for (int j = 1; j <= 6; j++) {
+                    board.getCellAt(new Position(i, j)).placePiece(Piece.X);
+                }
             }
         }
-        assertTrue(board.isFull());
+        assertEquals(full, board.isFull());
     }
 }
