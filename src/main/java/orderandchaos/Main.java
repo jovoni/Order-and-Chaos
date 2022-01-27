@@ -16,7 +16,7 @@ public class Main {
         while (!orderHasWon && n_turn <= 36) {
             Position inputPosition = Game.AskPosition();
             Piece inputPiece = Game.AskPiece();
-            game.MakeMove(inputPosition, inputPiece);
+            game.MakeMove();
             display.PrintBoard();
             orderHasWon = game.hasOrderWon(inputPosition, inputPiece);
         }

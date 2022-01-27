@@ -26,8 +26,6 @@ public class TestBoard {
                 board.getCellAt(new Position(i, j)).placePiece(Piece.X);
             }
         }
-        assertEquals(board.isFull(), true);
-
+        assertTrue(board.isFull());
     }
-
 }

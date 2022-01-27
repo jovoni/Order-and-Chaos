@@ -16,9 +16,9 @@ public class Game {
         this.board = new Board();
     }
 
-    public void MakeMove(Position inputPosition, Piece inputPiece) throws Cell.PosAlreadyOccupiedException {
-
-
+    public void MakeMove() throws Cell.PosAlreadyOccupiedException, NonValidPosException, NonValidPieceException {
+        Position inputPosition = AskPosition();
+        Piece inputPiece = AskPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
     }
 
@@ -38,8 +38,6 @@ public class Game {
         }catch (NonValidPosException | NumberFormatException e){
             return AskPosition();
         }
-
-
     }
 
     public static Piece AskPiece() throws NonValidPieceException {
@@ -55,8 +53,6 @@ public class Game {
         } catch(NonValidPieceException e){
             return AskPiece();
         }
-
-
     }
 
     public boolean hasOrderWon(Position position, Piece piece) {

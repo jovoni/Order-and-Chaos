@@ -31,6 +31,7 @@ public class Board extends HashSet<Cell> {
     }
 
     public boolean isFull(){
-        return this.stream().filter(c-> isOccupiedAt(c.getPosition())).findAny().isPresent();
+        return this.stream().
+                anyMatch(c-> isOccupiedAt(c.getPosition()));
     }
 }

@@ -23,35 +23,6 @@ public class TestGame {
     }
 
     @ParameterizedTest
-    @CsvSource({"X,false","O,false","Ciao,true"})
-    public void testPieceThrowsException(String piece, Boolean expected) throws NonValidPieceException {
-        System.setIn(new ByteArrayInputStream(piece.getBytes()));
-        boolean thrown = false;
-
-        try {
-            game.AskPiece();
-        } catch (NonValidPieceException e ) {
-            thrown = true;
-        }
-        assertEquals(thrown, expected);
-    }
-
-    @ParameterizedTest
-    @CsvSource({"5,5,false", "10,7,true", "ciao,2,true"})
-    public void testPositionThrowsException(String x, String y, Boolean expected) throws NonValidPosException, NonIntegerException {
-        String simulatedUserInput = x + System.getProperty("line.separator") + y;
-        System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
-
-        boolean thrown = false;
-        try {
-            game.AskPosition();
-        } catch (NonValidPosException | NumberFormatException e) {
-            thrown = true;
-        }
-        assertEquals(thrown, expected);
-    }
-
-    @ParameterizedTest
     @CsvSource({"1,1", "6,6", "6,1", "4,3"})
     public void testInputPosition(String x, String y) throws NonValidPosException, NonIntegerException {
         String simulatedUserInput = x + System.getProperty("line.separator") + y;
