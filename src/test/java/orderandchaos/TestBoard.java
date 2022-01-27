@@ -19,4 +19,15 @@ public class TestBoard {
         assertEquals(board.getCellAt(position).getPiece(), Piece.X);
     }
 
+    @Test
+    void checkFullBoard() throws Cell.PosAlreadyOccupiedException {
+        for (int i = 1; i<=6; i++) {
+            for (int j = 1; j <= 6; j++) {
+                board.getCellAt(new Position(i, j)).placePiece(Piece.X);
+            }
+        }
+        assertEquals(board.isFull(), true);
+
+    }
+
 }
