@@ -1,7 +1,10 @@
 package orderandchaos;
 
+import java.awt.*;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -34,4 +37,16 @@ public class Board extends HashSet<Cell> {
         return this.stream().
                 allMatch(c-> isOccupiedAt(c.getPosition()));
     }
+
+    public Set<Cell> getRow(Position position){
+        return this.stream().filter(c -> c.getPosition().getX() == position.getX())
+                .collect(Collectors.toCollection(TreeSet::new));
+    }
+
+    public Set<Cell> getCol(Position position){
+        return this.stream().filter(c -> c.getPosition().getY() == position.getY())
+                .collect(Collectors.toCollection(TreeSet::new));
+    }
+
+
 }

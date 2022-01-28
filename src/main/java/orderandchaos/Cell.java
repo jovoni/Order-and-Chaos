@@ -1,6 +1,6 @@
 package orderandchaos;
 
-public class Cell {
+public class Cell implements Comparable<Cell>{
     private final Position position;
     private boolean occupied;
     private Piece piece;
@@ -32,11 +32,18 @@ public class Cell {
         this.occupied = true;
     }
 
+    @Override
+    public int compareTo(Cell o) {
+        return this.position.compareTo(o.position);
+    }
+
+
     public static class PosAlreadyOccupiedException extends Exception {
         public PosAlreadyOccupiedException(String message) {
             super(message);
         }
     }
+
 
 
 }

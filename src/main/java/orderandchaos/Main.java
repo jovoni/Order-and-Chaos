@@ -3,6 +3,8 @@ package orderandchaos;
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 
+import java.util.Set;
+
 public class Main {
 
     public static void main(String[] args) throws NonValidPosException, Cell.PosAlreadyOccupiedException, NonValidPieceException {

@@ -1,6 +1,8 @@
 package orderandchaos;
 
-public class Position {
+import java.util.Comparator;
+
+public class Position implements Comparable<Position> {
     private final int x;
     private final int y;
 
@@ -17,6 +19,7 @@ public class Position {
         return this.y;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -24,5 +27,16 @@ public class Position {
         Position position = (Position) o;
         return x == position.x &&
                 y == position.y;
+    }
+
+
+    @Override
+    public int compareTo(Position o) {
+        int i = this.x - o.x;
+        if (i == 0){
+            return this.y - o.y;
+        }
+
+        else return i;
     }
 }

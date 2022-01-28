@@ -19,6 +19,7 @@ public class Game {
     public void MakeMove() throws Cell.PosAlreadyOccupiedException, NonValidPosException, NonValidPieceException {
         Position inputPosition = AskPosition();
         Piece inputPiece = AskPiece();
+        System.out.println(new Win(this.board, inputPosition).checkWin());
         board.getCellAt(inputPosition).placePiece(inputPiece);
     }
 
@@ -87,6 +88,7 @@ public class Game {
         else return 0;
 
     }
+
     public boolean hasOrderWon(Position position, Piece piece) {
         int y = position.getX();
         int x = position.getY();
