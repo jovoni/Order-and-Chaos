@@ -1,7 +1,5 @@
 package orderandchaos;
 
-import java.awt.*;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -47,6 +45,5 @@ public class Board extends HashSet<Cell> {
         return this.stream().filter(c -> c.getPosition().getY() == position.getY())
                 .collect(Collectors.toCollection(TreeSet::new));
     }
-
 
 }
