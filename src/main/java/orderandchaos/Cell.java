@@ -44,6 +44,4 @@ public class Cell implements Comparable<Cell>{
         }
     }
 
-
-
 }

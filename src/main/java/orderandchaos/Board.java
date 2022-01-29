@@ -46,5 +46,4 @@ public class Board extends HashSet<Cell> {
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
-
 }
