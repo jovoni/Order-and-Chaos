@@ -32,42 +32,42 @@ public class Board extends HashSet<Cell> {
     }
 
     public boolean isFull(){
-        return this.stream().
-                allMatch(c-> isOccupiedAt(c.getPosition()));
+        return this.stream()
+                .allMatch(c-> isOccupiedAt(c.getPosition()));
     }
 
     public Set<Cell> getRow(Position position){
-        return this.stream().filter(c -> c.getPosition().getX() == position.getX())
+        return this.stream()
+                .filter(c -> c.getPosition().getX() == position.getX())
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
     public Set<Cell> getCol(Position position){
-        return this.stream().filter(c -> c.getPosition().getY() == position.getY())
+        return this.stream()
+                .filter(c -> c.getPosition().getY() == position.getY())
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
     public Set<Cell> getAntiDiag(Position position){
-        return this.stream().filter(c -> c.getPosition().getSum() == position.getSum())
+        return this.stream()
+                .filter(c -> c.getPosition().getSum() == position.getSum())
                 .collect(Collectors.toCollection(TreeSet::new));
     }
 
     public Set<Cell> getDiag(Position position){
         if (position.getX() == position.getY()){
-            return this.stream().filter(c -> c.getPosition().getX() == position.getY())
+            return this.stream()
+                    .filter(c -> c.getPosition().getX() == c.getPosition().getY())
                     .collect(Collectors.toCollection(TreeSet::new));
-        }
-
-        else if (position.getX() == position.getY()-1){
-            return this.stream().filter(c -> c.getPosition().getX() == position.getY()-1)
+        } else if (position.getX() == position.getY()-1){
+            return this.stream()
+                    .filter(c -> c.getPosition().getX() == c.getPosition().getY()-1)
                     .collect(Collectors.toCollection(TreeSet::new));
-        }
-
-        else if (position.getX() == position.getY()+1){
-            return this.stream().filter(c -> c.getPosition().getX() == position.getY()+1)
+        } else if (position.getX() == position.getY()+1){
+            return this.stream()
+                    .filter(c -> c.getPosition().getX() == c.getPosition().getY()+1)
                     .collect(Collectors.toCollection(TreeSet::new));
-        }
-
-        else{
+        } else{
             return null;
         }
     }
