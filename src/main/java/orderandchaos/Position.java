@@ -17,6 +17,10 @@ public class Position implements Comparable<Position> {
         return this.y;
     }
 
+    public int getSum() {
+        return this.x + this.y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,4 +37,6 @@ public class Position implements Comparable<Position> {
         }
         else return i;
     }
+
+
 }
