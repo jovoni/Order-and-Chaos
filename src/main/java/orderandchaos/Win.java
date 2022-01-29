@@ -14,34 +14,68 @@ public class Win{
     }
 
     public boolean checkWin(){
-        return CheckRow() || CheckCol();
+        return checkRow() || checkCol() || checkDiag() || checkAntiDiag();
     }
 
-    public boolean AllSixMatch(Set<Cell> set){
+    public boolean allSixMatch(Set<Cell> set){
         return set.stream().
                 allMatch(c -> c.getPiece().equals(lastPiece));
     }
 
-    public boolean FirstFiveMatch(Set<Cell> set){
+    public boolean firstFiveMatch(Set<Cell> set){
         return set.stream().
                 limit(5).
                 allMatch(c -> c.getPiece().equals(lastPiece));
     }
 
-    public boolean LastFiveMatch(Set<Cell> set){
+    public boolean lastFiveMatch(Set<Cell> set){
         return set.stream().
                 skip(1).
                 allMatch(c -> c.getPiece().equals(lastPiece));
     }
 
-    public boolean CheckRow(){
+
+
+    public boolean checkRow(){
         Set<Cell> Row = board.getRow(lastMove);
-        return !AllSixMatch(Row) && (FirstFiveMatch(Row) || LastFiveMatch(Row));
+        return !allSixMatch(Row) && (firstFiveMatch(Row) || lastFiveMatch(Row));
     }
 
-    public boolean CheckCol(){
+    public boolean checkCol(){
         Set<Cell> Col = board.getCol(lastMove);
-        return !AllSixMatch(Col) && (FirstFiveMatch(Col) || LastFiveMatch(Col));
+        return !allSixMatch(Col) && (firstFiveMatch(Col) || lastFiveMatch(Col));
     }
+
+    public boolean checkDiag(){
+        Set<Cell> Diag = board.getDiag(lastMove);
+        if (Diag != null){
+
+            if(Diag.size()==6){
+                return !allSixMatch(Diag) && (firstFiveMatch(Diag) || lastFiveMatch(Diag));
+            }
+            else{
+                return firstFiveMatch(Diag);
+            }
+
+        }
+        return false;
+    }
+
+    public boolean checkAntiDiag(){
+        Set<Cell> antiDiag = board.getDiag(lastMove);
+        if (antiDiag != null){
+
+            if(antiDiag.size()==6){
+                return !allSixMatch(antiDiag) && (firstFiveMatch(antiDiag) || lastFiveMatch(antiDiag));
+            }
+            else{
+                return firstFiveMatch(antiDiag);
+            }
+
+        }
+        return false;
+    }
+
+
 
 }
