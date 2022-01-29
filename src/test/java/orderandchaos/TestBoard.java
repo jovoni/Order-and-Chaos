@@ -7,8 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBoard {
     private final Board board = new Board();
@@ -60,7 +59,7 @@ public class TestBoard {
     }
 
     @ParameterizedTest
-    @CsvSource({"4,2,6","5,2,7","5,3,8"})
+    @CsvSource({"4,2,6","5,2,7","5,3,8","1,3,4"})
     void checkGetAntiDiag(int x, int y, int sum) throws Cell.PosAlreadyOccupiedException {
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
@@ -70,11 +69,15 @@ public class TestBoard {
             }
         }
         Set<Cell> antiDiag = board.getAntiDiag(new Position(x,y));
-        assertTrue(antiDiag.stream().allMatch(c->c.getPiece() == Piece.X));
+        if (sum < 6 || sum > 8) {
+            assertNull(antiDiag);
+        } else {
+            assertTrue(antiDiag.stream().allMatch(c->c.getPiece() == Piece.X));
+        }
     }
 
     @ParameterizedTest
-    @CsvSource({"2,2,0","2,1,1","1,2,-1"})
+    @CsvSource({"2,2,0","2,1,1","1,2,-1","6,3,3"})
     void checkGetDiag(int x, int y, int diff) throws Cell.PosAlreadyOccupiedException {
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
@@ -84,7 +87,11 @@ public class TestBoard {
             }
         }
         Set<Cell> diag = board.getDiag(new Position(x,y));
-        assertTrue(diag.stream().allMatch(c->c.getPiece() == Piece.X));
+        if (diff < -1 || diff > 1) {
+            assertNull(diag);
+        } else {
+            assertTrue(diag.stream().allMatch(c->c.getPiece() == Piece.X));
+        }
     }
 
 }
