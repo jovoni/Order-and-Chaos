@@ -49,9 +49,17 @@ public class Board extends HashSet<Cell> {
     }
 
     public Set<Cell> getAntiDiag(Position position){
-        return this.stream()
-                .filter(c -> c.getPosition().getSum() == position.getSum())
-                .collect(Collectors.toCollection(TreeSet::new));
+        Set<Integer> sums = new HashSet<>();
+        sums.add(6);
+        sums.add(7);
+        sums.add(8);
+        if (sums.contains(position.getSum())) {
+            return this.stream()
+                    .filter(c -> c.getPosition().getSum() == position.getSum())
+                    .collect(Collectors.toCollection(TreeSet::new));
+        } else {
+            return null;
+        }
     }
 
     public Set<Cell> getDiag(Position position){
