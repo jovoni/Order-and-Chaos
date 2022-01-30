@@ -2,8 +2,12 @@ package orderandchaos;
 
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
+import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -21,7 +25,7 @@ public class Game {
         this.nonBlocked = initNonBlocked();
     }
 
-    public Position MakeMove() throws Cell.PosAlreadyOccupiedException, NonValidPosException, NonValidPieceException {
+    public Position MakeMove() throws PosAlreadyOccupiedException, NonValidPosException, NonValidPieceException {
         Position inputPosition = AskPosition();
         Piece inputPiece = AskPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
@@ -39,7 +43,7 @@ public class Game {
         this.chaosWon = this.nonBlocked.isEmpty();
     }
 
-    public static Position AskPosition() throws NonValidPosException {
+    public Position AskPosition() throws NonValidPosException {
         System.out.println("Insert position x");
         Scanner myInput = new Scanner(System.in);
         String x_s = myInput.next();
@@ -51,8 +55,11 @@ public class Game {
             if (x > 6 || y > 6 || x < 1 || y < 1) {
                 throw new NonValidPosException("Not valid Position!");
             }
+            if(this.board.getCellAt(new Position(x,y)).isOccupied()){
+                throw new PosAlreadyOccupiedException("Position already occupied!");
+            }
             return new Position(x, y);
-        } catch (NonValidPosException | NumberFormatException e) {
+        } catch (NonValidPosException | NumberFormatException | PosAlreadyOccupiedException e) {
             return AskPosition();
         }
     }
