@@ -14,7 +14,7 @@ public class Game {
     protected Board board;
     protected final Player order;
     protected final Player chaos;
-    protected Map<String, Set<Position>> nonBlocked;
+    protected Map<String,Set<Position>> nonBlocked;
     protected boolean chaosWon = false;
     protected boolean orderWon = false;
 
@@ -30,11 +30,11 @@ public class Game {
         Piece inputPiece = AskPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
         this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
+
 //        this.nonBlocked.forEach((k,v) -> {
 //            System.out.println(k);
 //            v.stream().forEach(c->c.printPosition());
 //        });
-
         return inputPosition;
     }
 
@@ -44,18 +44,25 @@ public class Game {
     }
 
     public Position AskPosition() throws NonValidPosException {
-        System.out.println("Insert position x");
+//        System.out.println("Insert position as x,y");
+//        Scanner myInput = new Scanner(System.in);
+//        String x_s = myInput.next();
+//        System.out.println("Insert position y");
+//        String y_s = myInput.next();
+
+        System.out.println("Insert position as x,y");
         Scanner myInput = new Scanner(System.in);
+        myInput.useDelimiter("\\D");
         String x_s = myInput.next();
-        System.out.println("Insert position y");
         String y_s = myInput.next();
+
         try {
             int x = Integer.parseInt(x_s);
             int y = Integer.parseInt(y_s);
             if (x > 6 || y > 6 || x < 1 || y < 1) {
                 throw new NonValidPosException("Not valid Position!");
             }
-            if(this.board.getCellAt(new Position(x,y)).isOccupied()){
+            if (this.board.getCellAt(new Position(x,y)).isOccupied()) {
                 throw new PosAlreadyOccupiedException("Position already occupied!");
             }
             return new Position(x, y);
@@ -81,13 +88,20 @@ public class Game {
 
     public  Map<String, Set<Position>> initNonBlocked(){
        Map<String, Set<Position>> nonBlocked = new HashMap<>();
-
-       nonBlocked.put("row", board.getCol(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toSet()));
-       nonBlocked.put("col", board.getRow(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toSet()));
+       nonBlocked.put("row", board.getCol(new Position(1,1))
+               .stream()
+               .map(Cell::getPosition)
+               .collect(Collectors.toSet()));
+       nonBlocked.put("col", board.getRow(new Position(1,1))
+               .stream()
+               .map(Cell::getPosition)
+               .collect(Collectors.toSet()));
        nonBlocked.put("diag", Set.of(board.getCellAt(new Position(1,1)).getPosition(),
                board.getCellAt(new Position(1,2)).getPosition(),
                board.getCellAt(new Position(2,1)).getPosition()));
-       nonBlocked.put("antidiag", Set.of(new Position(1,6), new Position(1,5), new Position(2,6)));
+        nonBlocked.put("antidiag", Set.of(board.getCellAt(new Position(1,6)).getPosition(),
+                board.getCellAt(new Position(1,5)).getPosition(),
+                board.getCellAt(new Position(2,6)).getPosition()));
        return nonBlocked;
     }
 }

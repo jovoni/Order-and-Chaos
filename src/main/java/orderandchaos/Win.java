@@ -18,20 +18,20 @@ public class Win{
     }
 
     public boolean allSixMatch(Set<Cell> set){
-        return set.stream().
-                allMatch(c -> c.getPiece().equals(lastPiece));
+        return set.stream()
+                .allMatch(c -> c.getPiece().equals(lastPiece));
     }
 
     public boolean firstFiveMatch(Set<Cell> set){
-        return set.stream().
-                limit(5).
-                allMatch(c -> c.getPiece().equals(lastPiece));
+        return set.stream()
+                .limit(5)
+                .allMatch(c -> c.getPiece().equals(lastPiece));
     }
 
     public boolean lastFiveMatch(Set<Cell> set){
-        return set.stream().
-                skip(1).
-                allMatch(c -> c.getPiece().equals(lastPiece));
+        return set.stream()
+                .skip(1)
+                .allMatch(c -> c.getPiece().equals(lastPiece));
     }
 
     public boolean checkRow(){

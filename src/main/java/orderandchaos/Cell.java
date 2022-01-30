@@ -29,7 +29,9 @@ public class Cell implements Comparable<Cell>{
     }
 
     public void placePiece(Piece piece) throws PosAlreadyOccupiedException {
-        if (this.occupied) {throw new PosAlreadyOccupiedException("");}
+        if (this.occupied) {
+            throw new PosAlreadyOccupiedException("");
+        }
         this.piece = piece;
         this.occupied = true;
     }
@@ -38,8 +40,4 @@ public class Cell implements Comparable<Cell>{
     public int compareTo(Cell o) {
         return this.position.compareTo(o.position);
     }
-
-
-
-
 }

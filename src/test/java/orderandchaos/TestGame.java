@@ -25,9 +25,8 @@ public class TestGame {
     @ParameterizedTest
     @CsvSource({"1,1", "6,6", "6,1", "4,3"})
     public void testInputPosition(String x, String y) throws NonValidPosException, NonIntegerException {
-        String simulatedUserInput = x + System.getProperty("line.separator") + y;
+        String simulatedUserInput = x + "," + y;
         System.setIn(new ByteArrayInputStream(simulatedUserInput.getBytes()));
-
         Position position = new Position(Integer.parseInt(x), Integer.parseInt(y));
         assertEquals(position, game.AskPosition());
     }

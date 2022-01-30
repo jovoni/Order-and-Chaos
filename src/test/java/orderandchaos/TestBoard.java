@@ -1,5 +1,6 @@
 package orderandchaos;
 
+import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -19,7 +20,7 @@ public class TestBoard {
     }
 
     @Test
-    void checkPiece() throws Cell.PosAlreadyOccupiedException {
+    void checkPiece() throws PosAlreadyOccupiedException {
         Position position = new Position(4, 4);
         board.getCellAt(position).placePiece(Piece.X);
         assertEquals(board.getCellAt(position).getPiece(), Piece.X);
@@ -27,7 +28,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
-    void checkFullBoard(boolean full) throws Cell.PosAlreadyOccupiedException {
+    void checkFullBoard(boolean full) throws PosAlreadyOccupiedException {
         if (full) {
             for (int i = 1; i <= 6; i++) {
                 for (int j = 1; j <= 6; j++) {
@@ -40,7 +41,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    void checkGetRow(int i) throws Cell.PosAlreadyOccupiedException {
+    void checkGetRow(int i) throws PosAlreadyOccupiedException {
         for (int j = 1; j <= 6; j++) {
             board.getCellAt(new Position(i, j)).placePiece(Piece.X);
         }
@@ -50,7 +51,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    void checkGetCol(int i) throws Cell.PosAlreadyOccupiedException {
+    void checkGetCol(int i) throws PosAlreadyOccupiedException {
         for (int j = 1; j <= 6; j++) {
             board.getCellAt(new Position(j, i)).placePiece(Piece.O);
         }
@@ -60,7 +61,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @CsvSource({"4,2,6","5,2,7","5,3,8","1,3,4"})
-    void checkGetAntiDiag(int x, int y, int sum) throws Cell.PosAlreadyOccupiedException {
+    void checkGetAntiDiag(int x, int y, int sum) throws PosAlreadyOccupiedException {
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
                 if (i+j == sum) {
@@ -78,7 +79,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @CsvSource({"2,2,0","2,1,1","1,2,-1","6,3,3"})
-    void checkGetDiag(int x, int y, int diff) throws Cell.PosAlreadyOccupiedException {
+    void checkGetDiag(int x, int y, int diff) throws PosAlreadyOccupiedException {
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
                 if (i-j == diff) {
