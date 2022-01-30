@@ -26,6 +26,11 @@ public class Game {
         Piece inputPiece = AskPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
         this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
+//        this.nonBlocked.forEach((k,v) -> {
+//            System.out.println(k);
+//            v.stream().forEach(c->c.printPosition());
+//        });
+
         return inputPosition;
     }
 

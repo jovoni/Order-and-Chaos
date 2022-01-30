@@ -3,6 +3,7 @@ package orderandchaos;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Block {
     protected Board board;
@@ -20,18 +21,32 @@ public class Block {
 
     public Map<String, Set<Position>> updateNonBlocked(){
         if(checkRow()){
-            this.nonBlocked.get("row").remove(new Position(lastMove.getX(),1));
+            this.nonBlocked.put("row", this.nonBlocked.get("row")
+                    .stream()
+                    .filter(c->!(c.equals(new Position(lastMove.getX(),1))))
+                    .collect(Collectors.toSet()));
         }
         if (checkCol()){
-            this.nonBlocked.get("col").remove(new Position(1,lastMove.getY()));
+            this.nonBlocked.put("col", this.nonBlocked.get("col")
+                    .stream()
+                    .filter(c->!(c.equals(new Position(1,lastMove.getY()))))
+                    .collect(Collectors.toSet()));
+
         }
 
         if(checkDiag()){
             Position pos = board.getDiag(lastMove).stream().findFirst().get().getPosition();
-            this.nonBlocked.get("diag").remove(new Position(pos.getX(), pos.getY()));
+            this.nonBlocked.put("diag", this.nonBlocked.get("diag")
+                    .stream()
+                    .filter(c->!(c.equals(pos)))
+                    .collect(Collectors.toSet()));
         }
         if(checkAntiDiag()){
-            this.nonBlocked.get("antidiag").remove(board.getAntiDiag(lastMove).stream().findFirst().get().getPosition());
+            Position pos = board.getAntiDiag(lastMove).stream().findFirst().get().getPosition();
+            this.nonBlocked.put("antidiag", this.nonBlocked.get("antidiag")
+                    .stream()
+                    .filter(c->!(c.equals(pos)))
+                    .collect(Collectors.toSet()));
 
         }
         return this.nonBlocked;
