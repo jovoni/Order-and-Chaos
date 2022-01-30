@@ -39,12 +39,37 @@ public class Block {
     }
 
     public boolean checkRow() {
-        Set<Cell> Row = board.getRow(lastMove);
-        return (firstFiveBlocked(Row) && lastFiveBlocked(Row)) || firstAndLastEquals(Row);
+        Set<Cell> row = board.getRow(lastMove);
+        return (firstFiveBlocked(row) && lastFiveBlocked(row)) || firstAndLastEquals(row);
     }
 
     public boolean checkCol() {
-        Set<Cell> Col = board.getCol(lastMove);
-        return (firstFiveBlocked(Col) && lastFiveBlocked(Col)) || firstAndLastEquals(Col);
+        Set<Cell> col = board.getCol(lastMove);
+        return (firstFiveBlocked(col) && lastFiveBlocked(col)) || firstAndLastEquals(col);
     }
+
+    public boolean checkDiag() {
+        Set<Cell> diag = board.getDiag(lastMove);
+        if (diag != null) {
+            if(diag.size()==6){
+                return (firstFiveBlocked(diag) && lastFiveBlocked(diag)) || firstAndLastEquals(diag);
+            } else {
+                return firstFiveBlocked(diag);
+            }
+        }
+        return false;
+    }
+
+    public boolean checkAntiDiag() {
+        Set<Cell> antiDiag = board.getDiag(lastMove);
+        if (antiDiag != null) {
+            if (antiDiag.size()==6) {
+                return (firstFiveBlocked(antiDiag) && lastFiveBlocked(antiDiag)) || firstAndLastEquals(antiDiag);
+            } else {
+                return firstFiveBlocked(antiDiag);
+            }
+        }
+        return false;
+    }
+
 }
