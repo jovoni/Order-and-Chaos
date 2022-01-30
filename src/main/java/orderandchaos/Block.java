@@ -1,5 +1,6 @@
 package orderandchaos;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -13,6 +14,26 @@ public class Block {
         this.lastMove = lastMove;
         this.lastPiece = board.getCellAt(lastMove).getPiece();
     }
+
+    public Map<String, Set<Position>> updateNonBlocked(Map<String, Set<Position>> nonBlocked){
+        if(checkRow()){
+            nonBlocked.get("row").remove(new Position(lastMove.getX(),1));
+        }
+        if (checkCol()){
+            nonBlocked.get("col").remove(new Position(1,lastMove.getY()));
+        }
+
+        if(checkDiag()){
+            nonBlocked.get("diag").remove(board.getDiag(lastMove).stream().findFirst());
+        }
+        if(checkAntiDiag()){
+            nonBlocked.get("antidiag").remove(board.getAntiDiag(lastMove).stream().findFirst());
+
+        }
+        return nonBlocked;
+    }
+
+
 
     public boolean firstFiveBlocked(Set<Cell> set) {
         return set.stream().

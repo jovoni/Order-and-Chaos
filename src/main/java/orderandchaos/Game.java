@@ -3,17 +3,14 @@ package orderandchaos;
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Game {
     protected Board board;
     protected final Player order;
     protected final Player chaos;
-    protected Map<String, List<Position>> nonBlocked;
+    protected Map<String, Set<Position>> nonBlocked;
 
     public Game() {
         this.order = Player.Order;
@@ -63,14 +60,14 @@ public class Game {
     }
 
 
-   public  Map<String, List<Position>> initNonBlocked(){
+   public  Map<String, Set<Position>> initNonBlocked(){
 
-       Map<String, List<Position>> nonBlocked = new HashMap<>();
+       Map<String, Set<Position>> nonBlocked = new HashMap<>();
 
-       nonBlocked.put("row", board.getCol(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toList()));
-       nonBlocked.put("col", board.getRow(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toList()));
-       nonBlocked.put("diag", List.of(new Position(1,1), new Position(1,2), new Position(2,1)));
-       nonBlocked.put("antidiag", List.of(new Position(1,6), new Position(1,5), new Position(2,6)));
+       nonBlocked.put("row", board.getCol(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toSet()));
+       nonBlocked.put("col", board.getRow(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toSet()));
+       nonBlocked.put("diag", Set.of(new Position(1,1), new Position(1,2), new Position(2,1)));
+       nonBlocked.put("antidiag", Set.of(new Position(1,6), new Position(1,5), new Position(2,6)));
        return nonBlocked;
     }
 }
