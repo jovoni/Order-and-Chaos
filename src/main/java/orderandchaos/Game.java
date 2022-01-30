@@ -11,6 +11,8 @@ public class Game {
     protected final Player order;
     protected final Player chaos;
     protected Map<String, Set<Position>> nonBlocked;
+    protected boolean chaosWon = false;
+    protected boolean orderWon = false;
 
     public Game() {
         this.order = Player.Order;
@@ -19,11 +21,17 @@ public class Game {
         this.nonBlocked = initNonBlocked();
     }
 
-    public void MakeMove() throws Cell.PosAlreadyOccupiedException, NonValidPosException, NonValidPieceException {
+    public Position MakeMove() throws Cell.PosAlreadyOccupiedException, NonValidPosException, NonValidPieceException {
         Position inputPosition = AskPosition();
         Piece inputPiece = AskPiece();
-        System.out.println(new Win(this.board, inputPosition).checkWin());
         board.getCellAt(inputPosition).placePiece(inputPiece);
+        this.nonBlocked = new Block(this.board, inputPosition).updateNonBlocked(this.nonBlocked);
+        return inputPosition;
+    }
+
+    public void checkBoard(Position lastMove) {
+        this.orderWon = new Win(this.board, lastMove).checkWin();
+        this.chaosWon = this.nonBlocked.isEmpty();
     }
 
     public static Position AskPosition() throws NonValidPosException {
@@ -59,9 +67,7 @@ public class Game {
         }
     }
 
-
-   public  Map<String, Set<Position>> initNonBlocked(){
-
+    public  Map<String, Set<Position>> initNonBlocked(){
        Map<String, Set<Position>> nonBlocked = new HashMap<>();
 
        nonBlocked.put("row", board.getCol(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toSet()));

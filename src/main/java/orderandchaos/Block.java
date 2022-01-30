@@ -34,7 +34,6 @@ public class Block {
     }
 
 
-
     public boolean firstFiveBlocked(Set<Cell> set) {
         return set.stream().
                 limit(5).
