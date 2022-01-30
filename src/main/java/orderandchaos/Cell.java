@@ -18,7 +18,7 @@ public class Cell implements Comparable<Cell>{
         if (isOccupied()) {
             return this.piece;
         } else {
-            return null;
+            return Piece.Null;
         }
     }
 

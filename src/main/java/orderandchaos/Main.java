@@ -3,8 +3,6 @@ package orderandchaos;
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 
-import java.util.Set;
-
 public class Main {
 
     public static void main(String[] args) throws NonValidPosException, Cell.PosAlreadyOccupiedException, NonValidPieceException {
@@ -12,17 +10,17 @@ public class Main {
         Game game = new Game();
         Display display = new Display(game.board);
 
-        boolean orderHasWon = false;
-        while (!orderHasWon && !game.board.isFull()) {
-            game.MakeMove();
+        while (!game.chaosWon && !game.orderWon) {
+            Position lastMove = game.MakeMove();
+            game.checkBoard(lastMove);
             display.PrintBoard();
-            // game.hasOrderWon();
         }
 
-        if (orderHasWon) {
-            System.out.println("order won :)");
+        if (game.orderWon) {
+            System.out.println("Order you won!");
         } else {
-            System.out.println("chaos won :)");
+            System.out.println("Chaos you won, son of a bitch!");
         }
+
     }
 }

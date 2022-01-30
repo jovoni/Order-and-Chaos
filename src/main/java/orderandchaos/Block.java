@@ -37,7 +37,7 @@ public class Block {
     public boolean firstFiveBlocked(Set<Cell> set) {
         return set.stream().
                 limit(5).
-                filter(c -> c.getPiece().name().equals("X") || c.getPiece().name().equals("O")).
+                filter(c -> c.getPiece().equals(Piece.X) || c.getPiece().equals(Piece.O)).
                 distinct().
                 limit(2).
                 count() == 2;
