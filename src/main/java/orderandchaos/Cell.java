@@ -1,5 +1,7 @@
 package orderandchaos;
 
+import orderandchaos.Exceptions.PosAlreadyOccupiedException;
+
 public class Cell implements Comparable<Cell>{
     private final Position position;
     private boolean occupied;
@@ -38,10 +40,6 @@ public class Cell implements Comparable<Cell>{
     }
 
 
-    public static class PosAlreadyOccupiedException extends Exception {
-        public PosAlreadyOccupiedException(String message) {
-            super(message);
-        }
-    }
+
 
 }
