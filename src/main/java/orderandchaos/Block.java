@@ -8,36 +8,41 @@ public class Block {
     protected Board board;
     protected Position lastMove;
     protected Piece lastPiece;
+    protected Map<String, Set<Position>> nonBlocked;
 
-    public Block(Board board, Position lastMove) {
+
+    public Block(Board board, Position lastMove, Map<String, Set<Position>> nonBlocked) {
         this.board = board;
         this.lastMove = lastMove;
         this.lastPiece = board.getCellAt(lastMove).getPiece();
+        this.nonBlocked = nonBlocked;
     }
 
-    public Map<String, Set<Position>> updateNonBlocked(Map<String, Set<Position>> nonBlocked){
+    public Map<String, Set<Position>> updateNonBlocked(){
         if(checkRow()){
-            nonBlocked.get("row").remove(new Position(lastMove.getX(),1));
+            this.nonBlocked.get("row").remove(new Position(lastMove.getX(),1));
         }
         if (checkCol()){
-            nonBlocked.get("col").remove(new Position(1,lastMove.getY()));
+            this.nonBlocked.get("col").remove(new Position(1,lastMove.getY()));
         }
 
         if(checkDiag()){
-            nonBlocked.get("diag").remove(board.getDiag(lastMove).stream().findFirst());
+            Position pos = board.getDiag(lastMove).stream().findFirst().get().getPosition();
+            this.nonBlocked.get("diag").remove(new Position(pos.getX(), pos.getY()));
         }
         if(checkAntiDiag()){
-            nonBlocked.get("antidiag").remove(board.getAntiDiag(lastMove).stream().findFirst());
+            this.nonBlocked.get("antidiag").remove(board.getAntiDiag(lastMove).stream().findFirst().get().getPosition());
 
         }
-        return nonBlocked;
+        return this.nonBlocked;
     }
 
 
     public boolean firstFiveBlocked(Set<Cell> set) {
-        return set.stream().
+                return set.stream().
                 limit(5).
                 filter(c -> c.getPiece().equals(Piece.X) || c.getPiece().equals(Piece.O)).
+                map(c->c.getPiece()).
                 distinct().
                 limit(2).
                 count() == 2;
@@ -47,6 +52,7 @@ public class Block {
         return set.stream().
                 skip(1).
                 filter(c -> c.getPiece().name().equals("X") || c.getPiece().name().equals("O")).
+                map(c->c.getPiece()).
                 distinct().
                 limit(2).
                 count() == 2;
@@ -55,8 +61,14 @@ public class Block {
     public boolean firstAndLastEquals(Set<Cell> set) {
         Optional<Cell> firstCell = set.stream().findFirst();
         Optional<Cell> lastCell = set.stream().skip(5).findFirst();
-        return firstCell.get().getPiece().equals((lastCell.get()).getPiece());
+
+        if (!(firstCell.get().getPiece().equals(Piece.Null) && lastCell.get().getPiece().equals(Piece.Null))) {
+            return firstCell.get().getPiece().equals((lastCell.get()).getPiece());
+        } else {
+            return false;
+        }
     }
+
 
     public boolean checkRow() {
         Set<Cell> row = board.getRow(lastMove);
@@ -81,7 +93,7 @@ public class Block {
     }
 
     public boolean checkAntiDiag() {
-        Set<Cell> antiDiag = board.getDiag(lastMove);
+        Set<Cell> antiDiag = board.getAntiDiag(lastMove);
         if (antiDiag != null) {
             if (antiDiag.size()==6) {
                 return (firstFiveBlocked(antiDiag) && lastFiveBlocked(antiDiag)) || firstAndLastEquals(antiDiag);

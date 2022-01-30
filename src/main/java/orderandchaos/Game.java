@@ -25,7 +25,7 @@ public class Game {
         Position inputPosition = AskPosition();
         Piece inputPiece = AskPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
-        this.nonBlocked = new Block(this.board, inputPosition).updateNonBlocked(this.nonBlocked);
+        this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
         return inputPosition;
     }
 
@@ -72,7 +72,9 @@ public class Game {
 
        nonBlocked.put("row", board.getCol(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toSet()));
        nonBlocked.put("col", board.getRow(new Position(1,1)).stream().map(Cell::getPosition).collect(Collectors.toSet()));
-       nonBlocked.put("diag", Set.of(new Position(1,1), new Position(1,2), new Position(2,1)));
+       nonBlocked.put("diag", Set.of(board.getCellAt(new Position(1,1)).getPosition(),
+               board.getCellAt(new Position(1,2)).getPosition(),
+               board.getCellAt(new Position(2,1)).getPosition()));
        nonBlocked.put("antidiag", Set.of(new Position(1,6), new Position(1,5), new Position(2,6)));
        return nonBlocked;
     }
