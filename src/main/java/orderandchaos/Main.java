@@ -12,9 +12,9 @@ public class Main {
         Display display = new Display(game.board);
 
         while (!game.chaosWon && !game.orderWon) {
-            Position lastMove = game.MakeMove();
+            Position lastMove = game.makeMove();
             game.checkBoard(lastMove);
-            display.PrintBoard();
+            display.printBoard();
         }
 
         if (game.orderWon) {
