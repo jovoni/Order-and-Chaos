@@ -1,20 +1,18 @@
 package orderandchaos;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Block {
     protected Board board;
     protected Position lastMove;
-    protected Piece lastPiece;
     protected Map<String, Set<Position>> nonBlocked;
 
     public Block(Board board, Position lastMove, Map<String, Set<Position>> nonBlocked) {
         this.board = board;
         this.lastMove = lastMove;
-        this.lastPiece = board.getCellAt(lastMove).getPiece();
         this.nonBlocked = nonBlocked;
     }
 
@@ -60,68 +58,56 @@ public class Block {
     }
 
     public boolean firstFiveBlocked(Set<Cell> set) {
-                return set.stream()
-                        .limit(5)
-                        .filter(c -> c.getPiece().equals(Piece.X) || c.getPiece().equals(Piece.O))
-                        .map(c->c.getPiece())
-                        .distinct()
-                        .limit(2)
-                        .count() == 2;
+        return checkFiveBlocked(set.stream().limit(5));
     }
 
     public boolean lastFiveBlocked(Set<Cell> set) {
-        return set.stream()
-                .skip(1)
-                .filter(c -> c.getPiece().name().equals("X") || c.getPiece().name().equals("O"))
-                .map(c->c.getPiece())
+        return checkFiveBlocked(set.stream().skip(1));
+    }
+
+    public boolean checkFiveBlocked(Stream<Cell> set){
+        return set.filter(c -> c.getPiece().equals(Piece.X) || c.getPiece().equals(Piece.O))
+                .map(Cell::getPiece)
                 .distinct()
-                .limit(2)
                 .count() == 2;
     }
 
     public boolean firstAndLastEquals(Set<Cell> set) {
-        Optional<Cell> firstCell = set.stream().findFirst();
-        Optional<Cell> lastCell = set.stream().skip(5).findFirst();
+        Piece firstPiece = set.stream().findFirst().get().getPiece();
+        Piece lastPiece = set.stream().skip(5).findFirst().get().getPiece();
+        return firstPiece.equals(lastPiece) && !firstPiece.equals(Piece.Null);
 
-        if (!(firstCell.get().getPiece().equals(Piece.Null) && lastCell.get().getPiece().equals(Piece.Null))) {
-            return firstCell.get().getPiece().equals((lastCell.get()).getPiece());
-        } else {
-            return false;
-        }
     }
 
     public boolean checkRow() {
-        Set<Cell> row = board.getRow(lastMove);
-        return (firstFiveBlocked(row) && lastFiveBlocked(row)) || firstAndLastEquals(row);
+        return checkRowCol(board.getRow(lastMove));
     }
 
     public boolean checkCol() {
-        Set<Cell> col = board.getCol(lastMove);
-        return (firstFiveBlocked(col) && lastFiveBlocked(col)) || firstAndLastEquals(col);
+        return checkRowCol(board.getCol(lastMove));
+    }
+
+    public boolean checkRowCol(Set<Cell> line){
+        return (firstFiveBlocked(line) && lastFiveBlocked(line)) || firstAndLastEquals(line);
+
     }
 
     public boolean checkDiag() {
-        Set<Cell> diag = board.getDiag(lastMove);
-        if (diag != null) {
-            if(diag.size()==6){
-                return (firstFiveBlocked(diag) && lastFiveBlocked(diag)) || firstAndLastEquals(diag);
-            } else {
-                return firstFiveBlocked(diag);
-            }
-        }
-        return false;
+        return checkDiagAntiDiag(board.getDiag(lastMove));
     }
 
     public boolean checkAntiDiag() {
-        Set<Cell> antiDiag = board.getAntiDiag(lastMove);
-        if (antiDiag != null) {
-            if (antiDiag.size()==6) {
-                return (firstFiveBlocked(antiDiag) && lastFiveBlocked(antiDiag)) || firstAndLastEquals(antiDiag);
+        return checkDiagAntiDiag(board.getAntiDiag(lastMove));
+    }
+
+    public boolean checkDiagAntiDiag(Set<Cell> diagonal ){
+        if (diagonal != null) {
+            if (diagonal.size()==6) {
+                return (firstFiveBlocked(diagonal) && lastFiveBlocked(diagonal)) || firstAndLastEquals(diagonal);
             } else {
-                return firstFiveBlocked(antiDiag);
+                return firstFiveBlocked(diagonal);
             }
         }
         return false;
     }
-
 }
