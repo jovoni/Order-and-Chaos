@@ -17,44 +17,37 @@ public class Block {
     }
 
     public Map<String,Set<Position>> updateNonBlocked(){
-        if(checkRow()){
-            this.nonBlocked.put("row", this.nonBlocked.get("row")
-                    .stream()
-                    .filter(c->!(c.equals(new Position(lastMove.getX(),1))))
-                    .collect(Collectors.toSet()));
+        if(checkRow()) {
+            Position lastRowPos = new Position(lastMove.getX(),1);
+            this.nonBlocked.put("row", updateSet("row", lastRowPos));
         }
-        if (checkCol()){
-            this.nonBlocked.put("col", this.nonBlocked
-                    .get("col")
-                    .stream()
-                    .filter(c->!(c.equals(new Position(1,lastMove.getY()))))
-                    .collect(Collectors.toSet()));
+        if (checkCol()) {
+            Position lastColPos = new Position(1, lastMove.getY());
+            this.nonBlocked.put("col", updateSet("col", lastColPos));
         }
-        if(checkDiag()){
-            Position pos = board.getDiag(lastMove)
-                    .stream()
-                    .findFirst()
-                    .get()
-                    .getPosition();
-            this.nonBlocked.put("diag", this.nonBlocked
-                    .get("diag")
-                    .stream()
-                    .filter(c->!(c.equals(pos)))
-                    .collect(Collectors.toSet()));
+        if(checkDiag()) {
+            Position pos = getFirst(board.getDiag(lastMove));
+            this.nonBlocked.put("diag", updateSet("diag", pos));
         }
-        if(checkAntiDiag()){
-            Position pos = board.getAntiDiag(lastMove)
-                    .stream()
-                    .findFirst()
-                    .get()
-                    .getPosition();
-            this.nonBlocked.put("antidiag", this.nonBlocked
-                    .get("antidiag")
-                    .stream()
-                    .filter(c->!(c.equals(pos)))
-                    .collect(Collectors.toSet()));
+        if(checkAntiDiag()) {
+            Position pos = getFirst(board.getAntiDiag(lastMove));
+            this.nonBlocked.put("antidiag", updateSet("antidiag", pos));
         }
         return this.nonBlocked;
+    }
+
+    public Set<Position> updateSet(String key, Position pos) {
+        return this.nonBlocked.get(key)
+                .stream()
+                .filter(c->!(c.equals(pos)))
+                .collect(Collectors.toSet());
+    }
+
+    public Position getFirst(Set<Cell> diagonal) {
+        return diagonal.stream()
+                .findFirst()
+                .get()
+                .getPosition();
     }
 
     public boolean firstFiveBlocked(Set<Cell> set) {
@@ -76,7 +69,6 @@ public class Block {
         Piece firstPiece = set.stream().findFirst().get().getPiece();
         Piece lastPiece = set.stream().skip(5).findFirst().get().getPiece();
         return firstPiece.equals(lastPiece) && !firstPiece.equals(Piece.Null);
-
     }
 
     public boolean checkRow() {
