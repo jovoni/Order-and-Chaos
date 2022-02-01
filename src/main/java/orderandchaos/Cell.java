@@ -1,7 +1,5 @@
 package orderandchaos;
 
-import orderandchaos.Exceptions.PosAlreadyOccupiedException;
-
 public class Cell implements Comparable<Cell>{
     private final Position position;
     private boolean occupied;
@@ -28,10 +26,7 @@ public class Cell implements Comparable<Cell>{
         return position;
     }
 
-    public void placePiece(Piece piece) throws PosAlreadyOccupiedException {
-        if (this.occupied) {
-            throw new PosAlreadyOccupiedException("");
-        }
+    public void placePiece(Piece piece) {
         this.piece = piece;
         this.occupied = true;
     }

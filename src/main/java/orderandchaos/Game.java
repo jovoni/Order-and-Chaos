@@ -1,9 +1,5 @@
 package orderandchaos;
 
-import orderandchaos.Exceptions.NonValidPieceException;
-import orderandchaos.Exceptions.NonValidPosException;
-import orderandchaos.Exceptions.PosAlreadyOccupiedException;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -24,7 +20,7 @@ public class Game {
         this.nonBlocked = initNonBlocked();
     }
 
-    public Position makeMove() throws PosAlreadyOccupiedException, NonValidPosException, NonValidPieceException {
+    public Position makeMove() {
         Display display = new Display(board);
         Position inputPosition = display.askPosition();
         Piece inputPiece =  display.askPiece();

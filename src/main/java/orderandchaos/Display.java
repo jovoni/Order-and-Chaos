@@ -53,7 +53,7 @@ public class Display {
         }
     }
 
-    public Piece askPiece() throws NonValidPieceException {
+    public Piece askPiece() {
         System.out.println("Insert piece");
 
         Scanner myInput = new Scanner(System.in);

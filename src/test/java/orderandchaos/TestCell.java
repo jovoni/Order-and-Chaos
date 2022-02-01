@@ -1,10 +1,8 @@
 package orderandchaos;
 
-import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -26,22 +24,8 @@ public class TestCell {
 
     @ParameterizedTest
     @EnumSource(value=Piece.class, names={"X", "O"})
-    void testPiece(Piece piece) throws PosAlreadyOccupiedException {
+    void testPiece(Piece piece) {
         cell.placePiece(piece);
         assertEquals(piece, cell.getPiece());
-    }
-
-    @ParameterizedTest
-    @ValueSource( booleans = {true, false})
-    void testCellOccupied(boolean expected) throws PosAlreadyOccupiedException {
-        if (expected) cell.placePiece(Piece.O);
-
-        boolean thrown = false;
-        try {
-            cell.placePiece(Piece.X);
-        } catch (PosAlreadyOccupiedException e) {
-            thrown = true;
-        }
-        assertEquals(thrown, expected);
     }
 }
