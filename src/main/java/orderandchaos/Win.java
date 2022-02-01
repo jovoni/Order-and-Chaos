@@ -34,38 +34,38 @@ public class Win{
                 .allMatch(c -> c.getPiece().equals(lastPiece));
     }
 
+    public boolean checkRowCol(Set<Cell> line) {
+        return !allSixMatch(line) && (firstFiveMatch(line) || lastFiveMatch(line));
+    }
+
     public boolean checkRow(){
         Set<Cell> row = board.getRow(lastMove);
-        return !allSixMatch(row) && (firstFiveMatch(row) || lastFiveMatch(row));
+        return checkRowCol(row);
     }
 
     public boolean checkCol(){
         Set<Cell> col = board.getCol(lastMove);
-        return !allSixMatch(col) && (firstFiveMatch(col) || lastFiveMatch(col));
+        return checkRowCol(col);
+    }
+
+    public boolean checkDiagAntiDiag(Set<Cell> diagonal) {
+        if (diagonal != null) {
+            if (diagonal.size()==6) {
+                return !allSixMatch(diagonal) && (firstFiveMatch(diagonal) || lastFiveMatch(diagonal));
+            } else {
+                return firstFiveMatch(diagonal);
+            }
+        }
+        return false;
     }
 
     public boolean checkDiag(){
         Set<Cell> diag = board.getDiag(lastMove);
-        if (diag != null) {
-            if (diag.size()==6) {
-                return !allSixMatch(diag) && (firstFiveMatch(diag) || lastFiveMatch(diag));
-            } else {
-                return firstFiveMatch(diag);
-            }
-        }
-        return false;
+        return checkDiagAntiDiag(diag);
     }
 
-    public boolean checkAntiDiag(){
-        Set<Cell> antiDiag = board.getDiag(lastMove);
-        if (antiDiag != null) {
-            if (antiDiag.size()==6) {
-                return !allSixMatch(antiDiag) && (firstFiveMatch(antiDiag) || lastFiveMatch(antiDiag));
-            } else {
-                return firstFiveMatch(antiDiag);
-            }
-        }
-        return false;
+    public boolean checkAntiDiag() {
+        Set<Cell> antiDiag = board.getAntiDiag(lastMove);
+        return checkDiagAntiDiag(antiDiag);
     }
-
 }
