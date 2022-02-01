@@ -39,13 +39,11 @@ public class Win{
     }
 
     public boolean checkRow(){
-        Set<Cell> row = board.getRow(lastMove);
-        return checkRowCol(row);
+        return checkRowCol(board.getRow(lastMove));
     }
 
     public boolean checkCol(){
-        Set<Cell> col = board.getCol(lastMove);
-        return checkRowCol(col);
+        return checkRowCol(board.getCol(lastMove));
     }
 
     public boolean checkDiagAntiDiag(Set<Cell> diagonal) {
@@ -60,12 +58,10 @@ public class Win{
     }
 
     public boolean checkDiag(){
-        Set<Cell> diag = board.getDiag(lastMove);
-        return checkDiagAntiDiag(diag);
+        return checkDiagAntiDiag(board.getDiag(lastMove));
     }
 
     public boolean checkAntiDiag() {
-        Set<Cell> antiDiag = board.getAntiDiag(lastMove);
-        return checkDiagAntiDiag(antiDiag);
+        return checkDiagAntiDiag(board.getAntiDiag(lastMove));
     }
 }
