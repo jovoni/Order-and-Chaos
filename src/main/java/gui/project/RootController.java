@@ -48,6 +48,4 @@ public class RootController implements Initializable {
 
     public Display getDisplay(){ return display; }
 
-
-
 }

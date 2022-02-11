@@ -1,17 +1,24 @@
 package gui.project;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import orderandchaos.*;
+import javafx.stage.Stage;
+import orderandchaos.Display;
+import orderandchaos.Game;
+import orderandchaos.Piece;
+import orderandchaos.Position;
 
-
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -46,21 +53,27 @@ public class GridController implements Initializable {
 
     }
 
-    String getSymbol(){
+    String getSymbol() {
         return this.rootController.getSymbol();
     }
 
-    Game getGame() { return this.rootController.getGame();}
+    Game getGame() {
+        return this.rootController.getGame();
+    }
 
-    Piece getPiece() { return this.rootController.getPiece();}
+    Piece getPiece() {
+        return this.rootController.getPiece();
+    }
 
-    Display getDisplay() { return this.rootController.getDisplay();}
+    Display getDisplay() {
+        return this.rootController.getDisplay();
+    }
 
 
     @FXML
     private void clickGrid(MouseEvent event) {
 
-        Node source = (Node)event.getSource() ;
+        Node source = (Node) event.getSource();
         Integer colIndex = grid.getColumnIndex(source);
         Integer rowIndex = grid.getRowIndex(source);
         ImageView im = new ImageView(getSymbol());
@@ -68,14 +81,34 @@ public class GridController implements Initializable {
         im.setFitWidth(50);
         grid.add(im, colIndex, rowIndex);
 
-        Position position = new Position(rowIndex+1,colIndex+1);
+        Position position = new Position(rowIndex + 1, colIndex + 1);
         getGame().getBoard().getCellAt(position).placePiece(getPiece());
 
         getDisplay().printBoard();
 
+        checkEndGame(position, source);
+
     }
 
+    public void checkEndGame(Position position, Node source){
+        getGame().checkBoard(position);
 
+        if(getGame().getChaosWon() || getGame().getOrderWon()){
+            FXMLLoader endLoader = new FXMLLoader();
+            endLoader.setLocation(getClass().getResource("/End.fxml"));
+            Parent endGame = null;
+            try {
+                endGame = endLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene endScene = new Scene(endGame);
+
+            Stage endStage = (Stage)source.getScene().getWindow();
+            endStage.setScene(endScene);
+            endStage.show();
+        }
+}
 
 
 

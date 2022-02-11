@@ -61,4 +61,12 @@ public class Game {
     public Board getBoard(){
         return this.board;
     }
+
+    public boolean getOrderWon(){
+        return this.orderWon;
+    }
+
+    public boolean getChaosWon(){
+        return this.chaosWon;
+    }
 }
