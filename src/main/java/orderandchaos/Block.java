@@ -33,6 +33,13 @@ public class Block {
             Position pos = getFirst(board.getAntiDiag(lastMove));
             this.nonBlocked.put("antidiag", updateSet("antidiag", pos));
         }
+
+        this.nonBlocked.forEach((k,v) -> {
+            if(this.nonBlocked.get(k).isEmpty()) {
+            this.nonBlocked.remove(k);}
+
+        });
+
         return this.nonBlocked;
     }
 
