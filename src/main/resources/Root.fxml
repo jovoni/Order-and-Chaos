@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="gui.project.RootController">
-   <Button layoutX="167.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" text="X" />
-   <Button layoutX="392.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" text="O" />
-   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="229.0" layoutY="26.0" prefHeight="18.0" prefWidth="142.0" text="Order and Chaos" />
+<AnchorPane prefHeight="440.0" prefWidth="600.0" stylesheets="@Root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.RootController">
+   <Button contentDisplay="CENTER" ellipsisString="" layoutX="170.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" prefHeight="27.0" prefWidth="30.0" stylesheets="@Root.css" text="X">
+      <font>
+         <Font name="Corbel Light" size="14.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.5254902243614197" green="0.5254902243614197" blue="0.5254902243614197" />
+            </color>
+         </DropShadow>
+      </effect></Button>
+
+   <Button contentDisplay="CENTER" layoutX="404.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" prefHeight="27.0" prefWidth="27.0" stylesheets="@Root.css" text="O">
+      <font>
+         <Font name="Corbel Light" size="14.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <effect>
+         <DropShadow>
+            <color>
+               <Color red="0.5254902243614197" green="0.5254902243614197" blue="0.5254902243614197" />
+            </color>
+         </DropShadow>
+      </effect></Button>
+
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="187.0" layoutY="28.0" prefHeight="28.0" prefWidth="225.0" stylesheets="@Root.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+      <font>
+         <Font name="Corbel Light" size="24.0" />
+      </font></Label>
    <fx:include fx:id="grid" alignment="CENTER" layoutX="130.0" layoutY="130.0" source="Grid.fxml" />
 </AnchorPane>
