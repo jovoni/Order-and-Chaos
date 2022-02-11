@@ -57,4 +57,8 @@ public class Game {
                 board.getCellAt(new Position(2,6)).getPosition()));
        return nonBlocked;
     }
+
+    public Board getBoard(){
+        return this.board;
+    }
 }
