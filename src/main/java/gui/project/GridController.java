@@ -9,6 +9,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import orderandchaos.*;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,6 +50,12 @@ public class GridController implements Initializable {
         return this.rootController.getSymbol();
     }
 
+    Game getGame() { return this.rootController.getGame();}
+
+    Piece getPiece() { return this.rootController.getPiece();}
+
+    Display getDisplay() { return this.rootController.getDisplay();}
+
 
     @FXML
     private void clickGrid(MouseEvent event) {
@@ -59,6 +67,11 @@ public class GridController implements Initializable {
         im.setFitHeight(50);
         im.setFitWidth(50);
         grid.add(im, colIndex, rowIndex);
+
+        Position position = new Position(rowIndex+1,colIndex+1);
+        getGame().getBoard().getCellAt(position).placePiece(getPiece());
+
+        getDisplay().printBoard();
 
     }
 
