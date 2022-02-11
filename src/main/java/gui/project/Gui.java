@@ -14,13 +14,12 @@ public class Gui extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        System.out.println(Gui.class.getResource("/Root.fxml"));
+
         FXMLLoader loader = new FXMLLoader();
-        //loader.setLocation(getClass().getResource("Grid.fxml"));
         loader.setLocation(getClass().getResource("/Root.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-
+        Scene scene = new Scene(root, 600, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Order and Chaos");
         stage.show();

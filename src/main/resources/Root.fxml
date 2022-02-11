@@ -8,8 +8,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="440.0" prefWidth="600.0" stylesheets="@Root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.RootController">
-   <Button contentDisplay="CENTER" ellipsisString="" layoutX="170.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" prefHeight="27.0" prefWidth="30.0" stylesheets="@Root.css" text="X">
+<AnchorPane prefHeight="440.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.RootController">
+   <Button contentDisplay="CENTER" ellipsisString="" layoutX="170.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" prefHeight="27.0" prefWidth="30.0" stylesheets="@style.css" text="X">
       <font>
          <Font name="Corbel Light" size="14.0" />
       </font>
@@ -24,7 +24,7 @@
          </DropShadow>
       </effect></Button>
 
-   <Button contentDisplay="CENTER" layoutX="404.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" prefHeight="27.0" prefWidth="27.0" stylesheets="@Root.css" text="O">
+   <Button contentDisplay="CENTER" layoutX="404.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" prefHeight="27.0" prefWidth="27.0" stylesheets="@style.css" text="O">
       <font>
          <Font name="Corbel Light" size="14.0" />
       </font>
@@ -39,7 +39,7 @@
          </DropShadow>
       </effect></Button>
 
-   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="187.0" layoutY="28.0" prefHeight="28.0" prefWidth="225.0" stylesheets="@Root.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="187.0" layoutY="28.0" prefHeight="28.0" prefWidth="225.0" stylesheets="@style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
       <font>
          <Font name="Corbel Light" size="24.0" />
       </font></Label>
