@@ -8,11 +8,13 @@ public class Main {
     public static void main(String[] args) throws NonValidPosException, PosAlreadyOccupiedException, NonValidPieceException {
 
         Game game = new Game();
+        BlockChecker BC = new BlockChecker(game.board);
         Display display = new Display(game.board);
 
         while (!game.chaosWon && !game.orderWon) {
             Position lastMove = game.makeMove();
             game.checkBoard(lastMove);
+            BC.update(lastMove);
             display.printBoard();
         }
 
