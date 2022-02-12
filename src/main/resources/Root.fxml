@@ -8,40 +8,32 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="440.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.RootController">
-   <Button contentDisplay="CENTER" ellipsisString="" layoutX="140.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" prefHeight="27.0" prefWidth="30.0" stylesheets="@style.css" text="X">
-      <font>
-         <Font name="Corbel Light" size="14.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-      <effect>
-         <DropShadow>
-            <color>
-               <Color red="0.5254902243614197" green="0.5254902243614197" blue="0.5254902243614197" />
-            </color>
-         </DropShadow>
-      </effect></Button>
+<AnchorPane fx:id="anchorpane" prefHeight="600.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.RootController">
 
-   <Button contentDisplay="CENTER" layoutX="406.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" prefHeight="27.0" prefWidth="27.0" stylesheets="@style.css" text="O">
-      <font>
-         <Font name="Corbel Light" size="14.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-      <effect>
-         <DropShadow>
-            <color>
-               <Color red="0.5254902243614197" green="0.5254902243614197" blue="0.5254902243614197" />
-            </color>
-         </DropShadow>
-      </effect></Button>
-
-   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="14.0" prefHeight="42.0" prefWidth="266.0" stylesheets="@style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="600.0" stylesheets="@style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
       <font>
          <Font name="Corbel Light" size="36.0" />
-      </font></Label>
-   <fx:include fx:id="grid" alignment="CENTER" layoutX="130.0" layoutY="130.0" source="Grid.fxml" />
+      </font>
+   </Label>
+
+   <Button contentDisplay="CENTER" ellipsisString="" layoutX="235.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" prefHeight="30.0" prefWidth="30.0" stylesheets="@style.css" text="X">
+      <font>
+         <Font name="Corbel Light" size="14.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      </Button>
+
+   <Button contentDisplay="CENTER" layoutX="335" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" prefHeight="30.0" prefWidth="30.0" stylesheets="@style.css" text="O">
+      <font>
+         <Font name="Corbel Light" size="14.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      </Button>
+
+   <fx:include fx:id="grid" layoutX="110" layoutY="130" alignment="CENTER" source="Grid.fxml" />
+
 </AnchorPane>
