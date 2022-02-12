@@ -20,6 +20,7 @@ public class StartController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Scene scene = new Scene(root, 600, 600);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         Stage stage = new Stage();
@@ -30,6 +31,19 @@ public class StartController {
     }
 
     public void onMouseClickedRules(MouseEvent mouseEvent) {
-
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Rules.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root, 600, 600);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Order and Chaos");
+        stage.show();
     }
 }
