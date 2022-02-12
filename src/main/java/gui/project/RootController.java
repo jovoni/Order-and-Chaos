@@ -37,7 +37,7 @@ public class RootController implements Initializable {
 
     public void onMouseClickedCross() {
 
-        this.symbol = "/newcross.png" ;
+        this.symbol = "/newcross.png";
         this.piece = Piece.X;
     }
 
