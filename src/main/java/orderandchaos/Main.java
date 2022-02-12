@@ -21,6 +21,5 @@ public class Main {
         } else {
             System.out.println("Chaos you won, son of a bitch!");
         }
-
     }
 }

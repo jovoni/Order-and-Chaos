@@ -10,11 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class StartController  implements Initializable {
-
-
 
     public void onMouseClickedPlay(MouseEvent mouseEvent) {
         FXMLLoader loader = new FXMLLoader();
@@ -34,8 +33,6 @@ public class StartController  implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Order and Chaos");
         stage.show();
-
-
     }
 
     public void onMouseClickedRules(MouseEvent mouseEvent) {
@@ -49,7 +46,7 @@ public class StartController  implements Initializable {
         }
 
         Scene scene = new Scene(root, 600, 600);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Order and Chaos");
@@ -58,9 +55,6 @@ public class StartController  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
-
-
 
 }
