@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.StartController">
    <children>
-      <Button layoutX="131.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay" text="Play " />
+      <Button layoutX="131.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay"  text="Play " />
       <Button layoutX="409.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedRules" text="Rules" />
       <Label layoutX="255.0" layoutY="52.0" text="Order and Chaos" />
    </children>
