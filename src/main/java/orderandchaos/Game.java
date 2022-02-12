@@ -27,17 +27,24 @@ public class Game {
         board.getCellAt(inputPosition).placePiece(inputPiece);
         this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
 
-//        this.nonBlocked.forEach((k,v) -> {
-//            System.out.println(k);
-//            v.stream().forEach(c->c.printPosition());
-//        });
         return inputPosition;
     }
 
     public void checkBoard(Position lastMove) {
         this.orderWon = new Win(this.board, lastMove).checkWin();
-        this.chaosWon = this.nonBlocked.isEmpty();
+        this.chaosWon = nonBlockedIsEmpty(this.nonBlocked);
     }
+
+    public boolean nonBlockedIsEmpty(Map<String, Set<Position>> nonBlocked){
+        return nonBlocked.values()
+                .stream()
+                .allMatch(c-> c.isEmpty());
+
+    }
+    public void updateNonBlocked(Position inputPosition){
+        this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
+    }
+
 
     public  Map<String, Set<Position>> initNonBlocked(){
        Map<String, Set<Position>> nonBlocked = new HashMap<>();
@@ -56,6 +63,10 @@ public class Game {
                 board.getCellAt(new Position(1,5)).getPosition(),
                 board.getCellAt(new Position(2,6)).getPosition()));
        return nonBlocked;
+    }
+
+    public  Map<String, Set<Position>> getNonBlocked(){
+        return this.nonBlocked;
     }
 
     public Board getBoard(){

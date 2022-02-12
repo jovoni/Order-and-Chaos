@@ -17,6 +17,7 @@ public class RootController implements Initializable {
     private Display display;
     public Piece piece;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
