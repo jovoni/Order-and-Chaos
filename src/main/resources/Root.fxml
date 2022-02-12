@@ -43,5 +43,13 @@
       <font>
          <Font name="Corbel Light" size="36.0" />
       </font></Label>
+
+   <Label fx:id="turn" prefHeight="42.0" prefWidth="336.0"
+          text="Ciao" textAlignment="CENTER">
+      <font>
+         <Font name="Corbel Light" size="25.0" />
+      </font>
+   </Label>
+
    <fx:include fx:id="grid" alignment="CENTER" layoutX="130.0" layoutY="130.0" source="Grid.fxml" />
 </AnchorPane>

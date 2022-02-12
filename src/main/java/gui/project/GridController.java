@@ -85,7 +85,7 @@ public class GridController implements Initializable {
         getDisplay().printBoard();
 
         checkEndGame(position, source);
-
+        rootController.updateTurn("Chaos");
     }
 
     public void checkEndGame(Position position, Node source){
