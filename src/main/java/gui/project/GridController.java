@@ -91,9 +91,25 @@ public class GridController implements Initializable {
     public void checkEndGame(Position position, Node source){
         getGame().checkBoard(position);
 
-        if(getGame().getChaosWon() || getGame().getOrderWon()){
+        if(getGame().getChaosWon()){
             FXMLLoader endLoader = new FXMLLoader();
-            endLoader.setLocation(getClass().getResource("/End.fxml"));
+            endLoader.setLocation(getClass().getResource("/ChaosWon.fxml"));
+            Parent endGame = null;
+            try {
+                endGame = endLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene endScene = new Scene(endGame);
+
+            Stage endStage = (Stage)source.getScene().getWindow();
+            endStage.setScene(endScene);
+            endStage.show();
+        }
+
+        if(getGame().getOrderWon()){
+            FXMLLoader endLoader = new FXMLLoader();
+            endLoader.setLocation(getClass().getResource("/OrderWon.fxml"));
             Parent endGame = null;
             try {
                 endGame = endLoader.load();
