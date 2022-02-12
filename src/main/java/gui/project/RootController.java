@@ -31,13 +31,13 @@ public class RootController implements Initializable {
 
     public void onMouseClickedCircle() {
 
-        this.symbol = "/zero.jpg";
+        this.symbol = "/circle.png";
         this.piece = Piece.O;
     }
 
     public void onMouseClickedCross() {
 
-        this.symbol = "/cross.png" ;
+        this.symbol = "/newcross.png" ;
         this.piece = Piece.X;
     }
 
