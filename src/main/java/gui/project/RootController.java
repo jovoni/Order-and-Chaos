@@ -25,7 +25,7 @@ public class RootController implements Initializable {
         gridController.injectMainController(this);
         this.game = new Game();
         this.display = new Display(this.game.getBoard());
-        this.turn.setText("Order");
+        this.turn.setText("First turn: Order starts");
 
     }
 
@@ -52,8 +52,12 @@ public class RootController implements Initializable {
     public Display getDisplay(){ return display; }
 
     @FXML
-    public void updateTurn(String currentturn) {
-        turn.setText(currentturn);
+    public void updateTurn() {
+        if (this.turn.getText().contains("Order")){
+            turn.setText("Chaos turn");
+        }
+        else
+            turn.setText("Order turn");
     }
 
 }
