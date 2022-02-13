@@ -9,7 +9,7 @@ public class Game {
     protected Board board;
 //    protected final Player order;
 //    protected final Player chaos;
-    protected Map<String,Set<Position>> nonBlocked;
+    protected BlockChecker BlockChecker;
     protected boolean chaosWon;
     protected boolean orderWon;
 
@@ -17,7 +17,7 @@ public class Game {
 //        this.order = Player.Order;
 //        this.chaos = Player.Chaos;
         this.board = new Board();
-        this.nonBlocked = initNonBlocked();
+        this.BlockChecker = new BlockChecker(this.board);
     }
 
     public Position makeMove() {
@@ -25,51 +25,26 @@ public class Game {
         Position inputPosition = display.askPosition();
         Piece inputPiece =  display.askPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
-        this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
+        this.BlockChecker.update(inputPosition);
 
         return inputPosition;
     }
 
     public void checkBoard(Position lastMove) {
         this.orderWon = new Win(this.board, lastMove).checkWin();
-        this.chaosWon = nonBlockedIsEmpty(this.nonBlocked);
+        this.chaosWon = this.BlockChecker.isEmpty();
     }
 
-    public boolean nonBlockedIsEmpty(Map<String, Set<Position>> nonBlocked){
-        return nonBlocked.values()
-                .stream()
-                .allMatch(Set::isEmpty);
 
-    }
-    public void updateNonBlocked(Position inputPosition){
-        this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
-    }
 
-    public  Map<String, Set<Position>> initNonBlocked(){
-       Map<String, Set<Position>> nonBlocked = new HashMap<>();
-       nonBlocked.put("row", board.getCol(new Position(1,1))
-               .stream()
-               .map(Cell::getPosition)
-               .collect(Collectors.toSet()));
-       nonBlocked.put("col", board.getRow(new Position(1,1))
-               .stream()
-               .map(Cell::getPosition)
-               .collect(Collectors.toSet()));
-       nonBlocked.put("diag", Set.of(board.getCellAt(new Position(1,1)).getPosition(),
-               board.getCellAt(new Position(1,2)).getPosition(),
-               board.getCellAt(new Position(2,1)).getPosition()));
-        nonBlocked.put("antidiag", Set.of(board.getCellAt(new Position(1,6)).getPosition(),
-                board.getCellAt(new Position(1,5)).getPosition(),
-                board.getCellAt(new Position(2,6)).getPosition()));
-       return nonBlocked;
-    }
 
-    public  Map<String, Set<Position>> getNonBlocked(){
-        return this.nonBlocked;
-    }
 
     public Board getBoard(){
         return this.board;
+    }
+
+    public BlockChecker getBC(){
+        return this.BlockChecker;
     }
 
     public boolean getOrderWon(){

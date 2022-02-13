@@ -87,7 +87,7 @@ public class GridController implements Initializable {
         Position position = new Position(rowIndex + 1, colIndex + 1);
         getGame().getBoard().getCellAt(position).placePiece(getPiece());
 
-        getGame().updateNonBlocked(position);
+        getGame().getBC().update(position);
         getDisplay().printBoard();
 
         checkEndGame(position, source);
