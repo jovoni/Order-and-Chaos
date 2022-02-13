@@ -38,13 +38,12 @@ public class Game {
     public boolean nonBlockedIsEmpty(Map<String, Set<Position>> nonBlocked){
         return nonBlocked.values()
                 .stream()
-                .allMatch(c-> c.isEmpty());
+                .allMatch(Set::isEmpty);
 
     }
     public void updateNonBlocked(Position inputPosition){
         this.nonBlocked = new Block(this.board, inputPosition, this.nonBlocked).updateNonBlocked();
     }
-
 
     public  Map<String, Set<Position>> initNonBlocked(){
        Map<String, Set<Position>> nonBlocked = new HashMap<>();

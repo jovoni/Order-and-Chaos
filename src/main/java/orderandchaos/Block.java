@@ -33,8 +33,6 @@ public class Block {
             Position pos = getFirst(board.getAntiDiag(lastMove));
             this.nonBlocked.put("antidiag", updateSet("antidiag", pos));
         }
-
-
         return this.nonBlocked;
     }
 

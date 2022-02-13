@@ -13,28 +13,36 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import orderandchaos.*;
+import orderandchaos.Display;
+import orderandchaos.Game;
+import orderandchaos.Piece;
+import orderandchaos.Position;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GridController implements Initializable {
-
-
     @FXML
     public GridPane grid;
-
     RootController rootController;
-
 
     public void injectMainController(RootController rootController) {
         this.rootController = rootController;
     }
 
     @Override
-    public void initialize(URL location,
-                           ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
+//        double x = 100;
+//        double y = 10;
+//        AnchorPane.setRightAnchor(grid, x);
+//        AnchorPane.setTopAnchor(grid, y);
+//        AnchorPane.setLeftAnchor(grid, x);
+//        AnchorPane.setBottomAnchor(grid, y);
+//        grid.setVgap(8);
+//        grid.setHgap(8);
+//        grid.setAlignment(Pos.CENTER);
+
         grid.setVgap(8);
         grid.setHgap(8);
         grid.setAlignment(Pos.CENTER);
@@ -47,7 +55,6 @@ public class GridController implements Initializable {
                 r.setOnMouseClicked(this::clickGrid);
             }
         }
-
     }
 
     String getSymbol() {
@@ -69,7 +76,6 @@ public class GridController implements Initializable {
 
     @FXML
     private void clickGrid(MouseEvent event) {
-
         Node source = (Node) event.getSource();
         Integer colIndex = grid.getColumnIndex(source);
         Integer rowIndex = grid.getRowIndex(source);
@@ -86,6 +92,7 @@ public class GridController implements Initializable {
 
         checkEndGame(position, source);
         rootController.updateTurn();
+        source.setDisable(true);
     }
 
     public void checkEndGame(Position position, Node source){
@@ -122,9 +129,6 @@ public class GridController implements Initializable {
             endStage.setScene(endScene);
             endStage.show();
         }
-}
-
-
-
+    }
 }
 
