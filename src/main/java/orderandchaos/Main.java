@@ -34,9 +34,9 @@ public class Main {
         }
 
         if (game.orderWon) {
-            System.out.println( game.order.playerName+"-Order you won!");
+            System.out.println("Order you won!");
         } else {
-            System.out.println(game.order.playerName+"-Chaos you won, son of a bitch!");
+            System.out.println("Chaos you won, son of a bitch!");
         }
     }
 }
