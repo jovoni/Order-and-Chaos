@@ -67,4 +67,25 @@ public class Display {
             return askPiece();
         }
     }
+
+    public Boolean startInput() {
+        System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game. \n");
+        Scanner input = new Scanner(System.in);
+        String i = input.next();
+        if (i.equals("RULE")) {
+            System.out.print("RULES OF THE GAME \n");
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public void displayTurn(String turn){
+        if(turn == "Order") {
+            System.out.println("Order it's your turn!");
+        }
+        else
+            System.out.println("Chaos it's your turn!");
+    }
+
 }

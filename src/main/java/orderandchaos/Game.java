@@ -12,21 +12,25 @@ public class Game {
     protected BlockChecker BlockChecker;
     protected boolean chaosWon;
     protected boolean orderWon;
+    protected String turn;
+
 
     public Game() {
 //        this.order = Player.Order;
 //        this.chaos = Player.Chaos;
         this.board = new Board();
         this.BlockChecker = new BlockChecker(this.board);
+        this.turn = "Order";
     }
 
     public Position makeMove() {
         Display display = new Display(board);
+        display.displayTurn(this.turn);
         Position inputPosition = display.askPosition();
         Piece inputPiece =  display.askPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
         this.BlockChecker.update(inputPosition);
-
+        this.turn = changeTurn(turn);
         return inputPosition;
     }
 
@@ -35,8 +39,13 @@ public class Game {
         this.chaosWon = this.BlockChecker.isEmpty();
     }
 
-
-
+    public String changeTurn(String oldturn) {
+        if (oldturn == "Chaos"){
+            return "Order";
+        }
+        else
+            return "Chaos";
+    }
 
 
     public Board getBoard(){
