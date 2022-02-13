@@ -68,24 +68,19 @@ public class Display {
         }
     }
 
-    public Boolean startInput() {
-        System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game. \n");
-        Scanner input = new Scanner(System.in);
-        String i = input.next();
-        if (i.equals("RULE")) {
-            System.out.print("RULES OF THE GAME \n");
-            return false;
-        }
-        else
-            return true;
+    public Player insertPlayer() {
+        System.out.println("Insert your name and your role (Order or Chaos)!");
+        Scanner myInput = new Scanner(System.in);
+        myInput.useDelimiter("\\D");
+
+        String name1 = myInput.nextLine();
+        String role1 = myInput.nextLine();
+
+        return new Player(name1,role1);
     }
 
-    public void displayTurn(String turn){
-        if(turn == "Order") {
-            System.out.println("Order it's your turn!");
-        }
-        else
-            System.out.println("Chaos it's your turn!");
+    public void displayTurn(Player currentPlayer){
+        System.out.println(currentPlayer.playerName + "-" + currentPlayer.playerRole + " it's your turn!");
     }
 
 }

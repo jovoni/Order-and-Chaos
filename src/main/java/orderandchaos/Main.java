@@ -9,14 +9,23 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws NonValidPosException, PosAlreadyOccupiedException, NonValidPieceException {
+
+        System.out.println("Welcome to Order and Chaos!");
+
+        Boolean start = false;
+        while (!start){
+            System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game.");
+            Scanner input = new Scanner(System.in);
+            String i = input.next();
+            if (i.equals("RULE")) {
+                System.out.print("RULES OF THE GAME \n \n \n");
+            }
+            else
+                start=true;
+        }
+
         Game game = new Game();
         Display display = new Display(game.board);
-        Boolean start = false;
-
-        System.out.println("Welcome to Order and Chaos");
-        while (!start){
-            start = display.startInput();
-        }
 
         while (!game.chaosWon && !game.orderWon) {
             Position lastMove = game.makeMove();
@@ -25,9 +34,9 @@ public class Main {
         }
 
         if (game.orderWon) {
-            System.out.println("Order you won!");
+            System.out.println( game.order.playerName+"-Order you won!");
         } else {
-            System.out.println("Chaos you won, son of a bitch!");
+            System.out.println(game.order.playerName+"-Chaos you won, son of a bitch!");
         }
     }
 }

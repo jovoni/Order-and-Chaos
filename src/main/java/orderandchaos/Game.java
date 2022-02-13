@@ -7,30 +7,47 @@ import java.util.stream.Collectors;
 
 public class Game {
     protected Board board;
-//    protected final Player order;
-//    protected final Player chaos;
+
+    protected final Player order;
+    protected final Player chaos;
+
     protected BlockChecker BlockChecker;
     protected boolean chaosWon;
     protected boolean orderWon;
-    protected String turn;
-
+    protected Player currentPlayer;
+    protected Display display;
 
     public Game() {
-//        this.order = Player.Order;
-//        this.chaos = Player.Chaos;
         this.board = new Board();
+        this.display = new Display(board);
         this.BlockChecker = new BlockChecker(this.board);
-        this.turn = "Order";
+
+        Player p1 = createPlayer();
+        Player p2 = createPlayer();
+
+        System.out.println(p1.playerRole);
+
+        if (p1.playerRole.equals("Order")){
+            this.order = p1;
+            this.chaos = p2;
+        }
+        else{
+            this.chaos = p1;
+            this.order = p2;}
+        this.currentPlayer = order;
+    }
+
+    public Player createPlayer(){
+        return display.insertPlayer();
     }
 
     public Position makeMove() {
-        Display display = new Display(board);
-        display.displayTurn(this.turn);
+        display.displayTurn(this.currentPlayer);
         Position inputPosition = display.askPosition();
         Piece inputPiece =  display.askPiece();
         board.getCellAt(inputPosition).placePiece(inputPiece);
         this.BlockChecker.update(inputPosition);
-        this.turn = changeTurn(turn);
+        this.currentPlayer = changeTurn(currentPlayer);
         return inputPosition;
     }
 
@@ -39,14 +56,13 @@ public class Game {
         this.chaosWon = this.BlockChecker.isEmpty();
     }
 
-    public String changeTurn(String oldturn) {
-        if (oldturn == "Chaos"){
-            return "Order";
+    public Player changeTurn(Player oldPlayer) {
+        if (oldPlayer.playerRole.equals("Chaos")){
+            return order;
         }
         else
-            return "Chaos";
+            return chaos;
     }
-
 
     public Board getBoard(){
         return this.board;
