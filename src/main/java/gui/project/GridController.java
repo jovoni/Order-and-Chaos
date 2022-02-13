@@ -89,6 +89,9 @@ public class GridController implements Initializable {
         ImageView im = new ImageView(getSymbol());
         im.setFitHeight(50+3);
         im.setFitWidth(50+3);
+        im.setPreserveRatio(true);
+        im.setSmooth(true);
+        im.setCache(true);
         grid.add(im, colIndex, rowIndex);
 
         Position position = new Position(rowIndex + 1, colIndex + 1);
@@ -118,6 +121,7 @@ public class GridController implements Initializable {
 
             Stage endStage = (Stage)source.getScene().getWindow();
             endStage.setScene(endScene);
+            endStage.setResizable(false);
             endStage.show();
         }
 
@@ -134,6 +138,7 @@ public class GridController implements Initializable {
 
             Stage endStage = (Stage)source.getScene().getWindow();
             endStage.setScene(endScene);
+            endStage.setResizable(false);
             endStage.show();
         }
     }

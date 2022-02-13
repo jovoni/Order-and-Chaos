@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 
 public class EndController {
 
-
     public void onMouseClickedPlay(MouseEvent mouseEvent) {
         Gui app = new Gui();
         try {

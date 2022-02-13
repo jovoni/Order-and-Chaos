@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 public class StartController  implements Initializable {
 
     public void onMouseClickedPlay(MouseEvent mouseEvent) {
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Root.fxml"));
         Parent root = null;
@@ -31,6 +32,7 @@ public class StartController  implements Initializable {
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setTitle("Order and Chaos");
         stage.show();
     }
@@ -49,6 +51,7 @@ public class StartController  implements Initializable {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setTitle("Order and Chaos");
         stage.show();
     }

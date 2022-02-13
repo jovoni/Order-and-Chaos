@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import orderandchaos.*;
 
 import java.net.URL;
@@ -24,9 +26,7 @@ public class RootController implements Initializable {
     private Display display;
     public Piece piece;
 
-    private Color gray = Color.rgb(134, 136, 136);
     private Color darkGray = Color.rgb(147, 149, 152);
-    private Color lightGray = Color.rgb(216, 216, 216);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

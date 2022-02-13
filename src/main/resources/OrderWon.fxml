@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.EndController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.project.EndController" stylesheets="style.css">
    <children>
-      <Label alignment="CENTER" layoutX="123.0" layoutY="165.0" prefHeight="70.0" prefWidth="354.0" text="Order won!">
+      <Label alignment="CENTER" layoutY="165.0" prefHeight="70.0" prefWidth="600.0" text="Order won!" stylesheets="style.css">
          <font>
             <Font name="Segoe UI Light" size="48.0" />
          </font></Label>
-      <Button layoutX="274.0" layoutY="278.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay" text="Play again " />
+      <Button layoutX="250.0" layoutY="278.0" prefWidth="100" mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay" text="Play again" stylesheets="style.css" />
    </children>
 </AnchorPane>
