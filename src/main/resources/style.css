@@ -9,6 +9,7 @@
 
 .label {
     -fx-border-style: hidden hidden solid hidden;
+    -fx-border-width: 2;
     -fx-background-color: white;
     -fx-padding: 10;
     -fx-text-fill: black;

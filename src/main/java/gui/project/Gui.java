@@ -18,7 +18,7 @@ public class Gui extends Application {
         loader.setLocation(getClass().getResource("/Start.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 600);
-//        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Order and Chaos");
         stage.show();

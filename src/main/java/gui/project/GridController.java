@@ -49,8 +49,9 @@ public class GridController implements Initializable {
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
                 Rectangle r = new Rectangle(col * 50, row * 50, 50, 50);
-                r.setFill((col + row) % 2 == 0 ? Color.GRAY : Color.WHITE);
-                r.setStroke(Color.GRAY);
+                r.setFill(Color.WHITE);
+                r.setStroke(Color.rgb(216, 216, 216));
+                r.setStrokeWidth(3);
                 grid.addRow(row, r);
                 r.setOnMouseClicked(this::clickGrid);
             }
@@ -80,8 +81,8 @@ public class GridController implements Initializable {
         Integer colIndex = grid.getColumnIndex(source);
         Integer rowIndex = grid.getRowIndex(source);
         ImageView im = new ImageView(getSymbol());
-        im.setFitHeight(50);
-        im.setFitWidth(50);
+        im.setFitHeight(50+3);
+        im.setFitWidth(50+3);
         grid.add(im, colIndex, rowIndex);
 
         Position position = new Position(rowIndex + 1, colIndex + 1);
