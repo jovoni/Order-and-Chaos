@@ -1,5 +1,6 @@
-package gui.project;
+package gui.Controllers;
 
+import gui.GUI;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -7,7 +8,7 @@ import javafx.stage.Stage;
 public class EndController {
 
     public void onMouseClickedPlay(MouseEvent mouseEvent) {
-        Gui app = new Gui();
+        GUI app = new GUI();
         try {
             app.start(new Stage());
         } catch (Exception e) {

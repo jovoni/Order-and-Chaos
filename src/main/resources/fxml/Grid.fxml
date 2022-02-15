@@ -5,6 +5,6 @@
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:id="grid"
-          fx:controller="gui.project.GridController"
+          fx:controller="gui.Controllers.GridController"
           styleClass="grid">
 </GridPane>

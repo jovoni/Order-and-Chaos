@@ -1,17 +1,20 @@
 package orderandchaos;
 
 import orderandchaos.Entities.Position;
+import orderandchaos.Exceptions.NonValidPieceException;
+import orderandchaos.Exceptions.NonValidPosException;
+import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 import orderandchaos.Utils.Display;
 
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NonValidPosException, PosAlreadyOccupiedException, NonValidPieceException {
 
         System.out.println("Welcome to Order and Chaos!");
 
-        boolean start = false;
+        Boolean start = false;
         while (!start){
             System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game.");
             Scanner input = new Scanner(System.in);
@@ -20,7 +23,7 @@ public class Main {
                 System.out.print("RULES OF THE GAME \n \n \n");
             }
             else
-                start = true;
+                start=true;
         }
 
         Game game = new Game();

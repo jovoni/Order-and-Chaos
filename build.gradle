@@ -31,8 +31,8 @@ test {
 }
 
 application {
-    mainModule = 'gui.project'
-    mainClass = 'gui.project.Gui'
+    mainModule = 'gui'
+    mainClass = 'gui.GUI'
 }
 
 javafx {

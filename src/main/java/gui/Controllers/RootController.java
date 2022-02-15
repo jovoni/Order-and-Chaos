@@ -1,4 +1,4 @@
-package gui.project;
+package gui.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,7 +39,7 @@ public class RootController implements Initializable {
 
     @FXML
     public void onMouseClickedCircle() {
-        this.symbol = "/O.png";
+        this.symbol = "/imgs/O.png";
         this.piece = Piece.O;
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
@@ -47,7 +47,7 @@ public class RootController implements Initializable {
 
     @FXML
     public void onMouseClickedCross() {
-        this.symbol = "/X.png";
+        this.symbol = "/imgs/X.png";
         this.piece = Piece.X;
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
