@@ -18,7 +18,7 @@ public class TestGame {
     void TestWinRow(int col){
         game.board.getCol(new Position(1,col)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
 
-        assertTrue(new Win(game.board, new Position(1,col)).checkWin());
+        assertTrue(game.WinChecker.checkWin(new Position(1,col)));
     }
 
     @ParameterizedTest
@@ -26,14 +26,14 @@ public class TestGame {
     void TestWinCol(int row){
         game.board.getRow(new Position(row,1)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
 
-        assertTrue(new Win(game.board, new Position(row,1)).checkWin());
+        assertTrue(game.WinChecker.checkWin(new Position(row,1)));
     }
 
     @Test
     void TestWinDiag(){
         game.board.getRow(new Position(1,1)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
 
-        assertTrue(new Win(game.board, new Position(1,1)).checkWin());
+        assertTrue(game.WinChecker.checkWin(new Position(1,1)));
     }
 
     @ParameterizedTest
@@ -41,7 +41,7 @@ public class TestGame {
     void TestNotWinRow(int col){
         game.board.getCol(new Position(1,col)).stream().limit(6).forEach(cell -> cell.placePiece(Piece.X));
 
-        assertFalse(new Win(game.board, new Position(1,col)).checkWin());
+        assertFalse(game.WinChecker.checkWin(new Position(1,col)));
     }
 
     @ParameterizedTest
@@ -49,7 +49,7 @@ public class TestGame {
     void TestNotWinCol(int row){
         game.board.getRow(new Position(row,1)).stream().limit(6).forEach(cell -> cell.placePiece(Piece.X));
 
-        assertFalse(new Win(game.board, new Position(row,1)).checkWin());
+        assertFalse(game.WinChecker.checkWin(new Position(row,1)));
     }
 
 

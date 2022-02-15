@@ -8,17 +8,18 @@ import orderandchaos.Entities.Position;
 import java.util.Set;
 
 public class Win{
-    protected Board board;
-    protected Position lastMove;
-    protected Piece lastPiece;
+    private final Board board;
+    private Position lastMove;
+    private Piece lastPiece;
 
-    public Win(Board board, Position lastMove){
+    public Win(Board board){
         this.board = board;
-        this.lastMove = lastMove;
-        this.lastPiece = board.getCellAt(lastMove).getPiece();
+
     }
 
-    public boolean checkWin(){
+    public boolean checkWin(Position lastMove){
+        this.lastMove = lastMove;
+        this.lastPiece = board.getCellAt(lastMove).getPiece();
         return checkRow() || checkCol() || checkDiag() || checkAntiDiag();
     }
 
