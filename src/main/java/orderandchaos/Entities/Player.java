@@ -1,4 +1,4 @@
-package orderandchaos;
+package orderandchaos.Entities;
 
 public class Player {
     String playerName;

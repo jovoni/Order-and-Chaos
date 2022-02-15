@@ -1,4 +1,9 @@
-package orderandchaos;
+package orderandchaos.Utils;
+
+import orderandchaos.Entities.Board;
+import orderandchaos.Entities.Cell;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,11 +22,9 @@ public class BlockChecker extends HashSet<TreeSet<Cell>>{
             this.add((TreeSet<Cell>) board.getCol(c.getPosition()));
             this.add((TreeSet<Cell>) board.getRow(c.getPosition()));
         }
-
     }
 
     public void update(Position position){
-
         HashSet<TreeSet<Cell>> SetToRemove = this.stream().filter(s -> s.contains(new Cell(position))).
                 filter(s -> (firstFiveBlocked(s) && lastFiveBlocked(s) || firstAndLastEquals(s))).
                 collect(Collectors.toCollection(HashSet::new));
@@ -29,9 +32,6 @@ public class BlockChecker extends HashSet<TreeSet<Cell>>{
         SetToRemove.forEach(this::remove);
         //System.out.println(this.size());
     }
-
-
-
 
     public boolean firstFiveBlocked(Set<Cell> set) {
         return checkFiveBlocked(set.stream().limit(5));

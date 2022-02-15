@@ -1,8 +1,12 @@
 package orderandchaos;
 
+import orderandchaos.Entities.Board;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 import orderandchaos.Exceptions.PosAlreadyOccupiedException;
+import orderandchaos.Utils.Display;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;

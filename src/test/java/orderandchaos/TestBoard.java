@@ -1,5 +1,9 @@
 package orderandchaos;
 
+import orderandchaos.Entities.Board;
+import orderandchaos.Entities.Cell;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
 import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

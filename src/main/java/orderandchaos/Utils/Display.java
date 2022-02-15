@@ -1,5 +1,9 @@
-package orderandchaos;
+package orderandchaos.Utils;
 
+import orderandchaos.Entities.Board;
+import orderandchaos.Entities.Cell;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 import orderandchaos.Exceptions.PosAlreadyOccupiedException;
@@ -68,19 +72,19 @@ public class Display {
         }
     }
 
-    public Player insertPlayer() {
-        System.out.println("Insert your name and your role (Order or Chaos)!");
-        Scanner myInput = new Scanner(System.in);
-        myInput.useDelimiter("\\D");
-
-        String name1 = myInput.nextLine();
-        String role1 = myInput.nextLine();
-
-        return new Player(name1,role1);
-    }
-
-    public void displayTurn(Player currentPlayer){
-        System.out.println(currentPlayer.playerName + "-" + currentPlayer.playerRole + " it's your turn!");
-    }
+//    public Player insertPlayer() {
+//        System.out.println("Insert your name and your role (Order or Chaos)!");
+//        Scanner myInput = new Scanner(System.in);
+//        myInput.useDelimiter("\\D");
+//
+//        String name1 = myInput.nextLine();
+//        String role1 = myInput.nextLine();
+//
+//        return new Player(name1,role1);
+//    }
+//
+//    public void displayTurn(Player currentPlayer){
+//        System.out.println(currentPlayer.playerName + "-" + currentPlayer.playerRole + " it's your turn!");
+//    }
 
 }

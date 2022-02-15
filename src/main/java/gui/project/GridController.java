@@ -16,10 +16,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import orderandchaos.Display;
+import orderandchaos.Utils.Display;
 import orderandchaos.Game;
-import orderandchaos.Piece;
-import orderandchaos.Position;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
 
 import java.io.IOException;
 import java.net.URL;

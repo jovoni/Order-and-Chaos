@@ -7,9 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import orderandchaos.*;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Utils.Display;
 
 import java.net.URL;
 import java.util.ResourceBundle;

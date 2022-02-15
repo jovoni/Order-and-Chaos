@@ -1,4 +1,4 @@
-package orderandchaos;
+package orderandchaos.Entities;
 
 public enum Piece {
     X,

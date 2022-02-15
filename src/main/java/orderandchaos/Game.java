@@ -1,9 +1,11 @@
 package orderandchaos;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
+import orderandchaos.Entities.Board;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
+import orderandchaos.Utils.BlockChecker;
+import orderandchaos.Utils.Display;
+import orderandchaos.Utils.Win;
 
 public class Game {
     protected Board board;
@@ -11,7 +13,7 @@ public class Game {
     //protected final Player order;
     //protected final Player chaos;
 
-    protected BlockChecker BlockChecker;
+    protected orderandchaos.Utils.BlockChecker BlockChecker;
     protected boolean chaosWon;
     protected boolean orderWon;
     //protected Player currentPlayer;

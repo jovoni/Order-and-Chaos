@@ -1,5 +1,8 @@
 package orderandchaos;
 
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
+import orderandchaos.Utils.Win;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

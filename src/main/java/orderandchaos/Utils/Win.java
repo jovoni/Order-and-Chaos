@@ -1,4 +1,9 @@
-package orderandchaos;
+package orderandchaos.Utils;
+
+import orderandchaos.Entities.Board;
+import orderandchaos.Entities.Cell;
+import orderandchaos.Entities.Piece;
+import orderandchaos.Entities.Position;
 
 import java.util.Set;
 

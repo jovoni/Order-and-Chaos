@@ -1,9 +1,11 @@
-package orderandchaos;
+package orderandchaos.Entities;
+
 
 public class Cell implements Comparable<Cell>{
     private final Position position;
     private boolean occupied;
     private Piece piece;
+
 
     public Cell(Position cellPosition) {
         this.position = cellPosition;
