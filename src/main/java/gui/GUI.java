@@ -14,9 +14,6 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        System.out.println(javafx.scene.text.Font.getFamilies());
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Start.fxml"));
         Parent root = loader.load();
