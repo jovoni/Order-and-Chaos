@@ -13,7 +13,7 @@ public class Cell implements Comparable<Cell>{
     }
 
     public boolean isOccupied() {
-        return occupied;
+        return this.occupied;
     }
 
     public Piece getPiece() {
@@ -25,7 +25,7 @@ public class Cell implements Comparable<Cell>{
     }
 
     public Position getPosition() {
-        return position;
+        return this.position;
     }
 
     public void placePiece(Piece piece) {

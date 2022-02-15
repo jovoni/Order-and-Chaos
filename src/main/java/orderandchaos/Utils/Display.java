@@ -46,10 +46,10 @@ public class Display {
             int x = Integer.parseInt(x_s);
             int y = Integer.parseInt(y_s);
             if (x > 6 || y > 6 || x < 1 || y < 1) {
-                throw new NonValidPosException("Not valid Position!");
+                throw new NonValidPosException();
             }
             if (this.board.getCellAt(new Position(x,y)).isOccupied()) {
-                throw new PosAlreadyOccupiedException("Position already occupied!");
+                throw new PosAlreadyOccupiedException();
             }
             return new Position(x, y);
         } catch (NonValidPosException | NumberFormatException | PosAlreadyOccupiedException e) {
@@ -64,7 +64,7 @@ public class Display {
         String piece = myInput.next();
         try {
             if (!(piece.equals("X") || piece.equals("O"))) {
-                throw new NonValidPieceException("Insert X or O!");
+                throw new NonValidPieceException();
             }
             return Piece.valueOf(piece);
         } catch (NonValidPieceException e) {
