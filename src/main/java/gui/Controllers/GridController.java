@@ -36,30 +36,27 @@ public class GridController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        AnchorPane.setRightAnchor(grid, 80.0);
-        AnchorPane.setTopAnchor(grid, 110.0);
-        AnchorPane.setLeftAnchor(grid, 130.0);
-        AnchorPane.setBottomAnchor(grid, 130.0);
+//        double x = 100;
+//        double y = 10;
+//        AnchorPane.setRightAnchor(grid, x);
+//        AnchorPane.setTopAnchor(grid, y);
+//        AnchorPane.setLeftAnchor(grid, x);
+//        AnchorPane.setBottomAnchor(grid, y);
+//        grid.setVgap(8);
+//        grid.setHgap(8);
+//        grid.setAlignment(Pos.CENTER);
+
+        grid.setVgap(8);
+        grid.setHgap(8);
         grid.setAlignment(Pos.CENTER);
-
-        NumberBinding rectsAreaSize = Bindings.min(grid.heightProperty(), grid.widthProperty());
-        grid.vgapProperty().bind(rectsAreaSize.divide(60));
-        grid.hgapProperty().bind(rectsAreaSize.divide(60));
-
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
-                Rectangle r = new Rectangle();
-
-                r.xProperty().bind(rectsAreaSize.multiply(row).divide(6));
-                r.yProperty().bind(rectsAreaSize.multiply(col).divide(6));
-                r.heightProperty().bind(rectsAreaSize.divide(6).subtract(10));
-                r.widthProperty().bind(rectsAreaSize.divide(6).subtract(10));
-
+                Rectangle r = new Rectangle(col * 50, row * 50, 50, 50);
                 r.setFill(Color.WHITE);
                 r.setStroke(Color.rgb(216, 216, 216));
-                r.strokeWidthProperty().bind(rectsAreaSize.divide(100));
-                r.setOnMouseClicked(this::clickGrid);
+                r.setStrokeWidth(3);
                 grid.addRow(row, r);
+                r.setOnMouseClicked(this::clickGrid);
             }
         }
     }
