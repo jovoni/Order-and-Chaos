@@ -29,7 +29,7 @@ public class StartController  implements Initializable {
         ((Stage) node.getScene().getWindow()).close();
 
         Scene scene = new Scene(root, 600, 600);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setResizable(false);
