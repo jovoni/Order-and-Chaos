@@ -1,9 +1,6 @@
 package orderandchaos.Utils;
 
-import orderandchaos.Entities.Board;
-import orderandchaos.Entities.Cell;
-import orderandchaos.Entities.Piece;
-import orderandchaos.Entities.Position;
+import orderandchaos.Entities.*;
 
 import java.util.Set;
 
@@ -14,7 +11,6 @@ public class Win{
 
     public Win(Board board){
         this.board = board;
-
     }
 
     public boolean checkWin(Position lastMove){
