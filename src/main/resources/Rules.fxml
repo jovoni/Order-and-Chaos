@@ -3,12 +3,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="97.0" layoutY="53.0" prefHeight="74.0" prefWidth="405.0" text="Order and Chaos is a variant of the game tic-tac-toe on a 6×6 gameboard" />
-      <Label layoutX="116.0" layoutY="90.0" prefHeight="68.0" prefWidth="368.0" text="The player Order strives to create a five-in-a-row of either Xs or Os" />
-      <Label layoutX="171.0" layoutY="167.0" prefHeight="42.0" prefWidth="255.0" text="The opponent Chaos endeavors to prevent this" />
-      <Label layoutX="199.0" layoutY="209.0" prefHeight="18.0" prefWidth="200.0" text="Order plays first, then turns alternate." />
-      <Label layoutX="186.0" layoutY="149.0" prefHeight="18.0" prefWidth="227.0" text="either vertically, horizontally, or diagonally" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+
+   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="600.0"
+          stylesheets="@style.css" text="RULES">
+   </Label>
+
+   <Label fx:id="rule1" layoutY="160.0" prefWidth="600.0" text="Order and Chaos is a variant of\n the game tic-tac-toe on a 6×6 gameboard" />
+   <Label fx:id="rule2" layoutY="200.0" prefWidth="600.0" text="The player Order strives to create a five-in-a-row of either Xs or Os" />
+   <Label fx:id="rule5" layoutY="240.0" prefWidth="600" text="either vertically, horizontally, or diagonally" />
+   <Label fx:id="rule3" layoutY="280.0" prefWidth="600.0" text="The opponent Chaos endeavors to prevent this" />
+   <Label fx:id="rule4" layoutY="320.0" prefWidth="600" text="Order plays first, then turns alternate." />
+
 </AnchorPane>
