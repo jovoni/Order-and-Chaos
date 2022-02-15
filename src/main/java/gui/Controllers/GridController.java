@@ -110,7 +110,7 @@ public class GridController implements Initializable {
 
         if(getGame().getChaosWon()){
             FXMLLoader endLoader = new FXMLLoader();
-            endLoader.setLocation(getClass().getResource("/fxml/ChaosWon.fxml"));
+            endLoader.setLocation(getClass().getResource("/ChaosWon.fxml"));
             Parent endGame = null;
             try {
                 endGame = endLoader.load();
@@ -127,7 +127,7 @@ public class GridController implements Initializable {
 
         if(getGame().getOrderWon()){
             FXMLLoader endLoader = new FXMLLoader();
-            endLoader.setLocation(getClass().getResource("/fxml/OrderWon.fxml"));
+            endLoader.setLocation(getClass().getResource("/OrderWon.fxml"));
             Parent endGame = null;
             try {
                 endGame = endLoader.load();

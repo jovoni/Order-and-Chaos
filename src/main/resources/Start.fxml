@@ -15,7 +15,7 @@
                 text="Rules"/>
 
         <Label alignment="CENTER" contentDisplay="CENTER" layoutY="200" prefHeight="20.0" prefWidth="600.0"
-               stylesheets="@../css/style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+               stylesheets="@style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font size="36"></Font>
             </font>

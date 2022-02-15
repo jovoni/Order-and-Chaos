@@ -8,15 +8,15 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="440.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17"
+<AnchorPane prefHeight="440.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controllers.RootController">
 
     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="600.0"
-           stylesheets="@../css/style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+           stylesheets="@style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
     </Label>
 
     <Button fx:id="buttonX" contentDisplay="CENTER" layoutX="170.0" layoutY="496.0" mnemonicParsing="false"
-            onMouseClicked="#onMouseClickedCross" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/style.css" text="X">
+            onMouseClicked="#onMouseClickedCross" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text="X">
         <font>
             <Font size="14.0"/>
         </font>
@@ -26,7 +26,7 @@
     </Button>
 
     <Button fx:id="buttonO" contentDisplay="CENTER" layoutX="390" layoutY="496.0" mnemonicParsing="false"
-            onMouseClicked="#onMouseClickedCircle" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/style.css" text="O">
+            onMouseClicked="#onMouseClickedCircle" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text="O">
         <font>
             <Font name="Corbel Light" size="14.0"/>
         </font>

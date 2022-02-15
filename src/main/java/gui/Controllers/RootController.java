@@ -39,7 +39,7 @@ public class RootController implements Initializable {
 
     @FXML
     public void onMouseClickedCircle() {
-        this.symbol = "/imgs/O.png";
+        this.symbol = "O.png";
         this.piece = Piece.O;
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
@@ -47,7 +47,7 @@ public class RootController implements Initializable {
 
     @FXML
     public void onMouseClickedCross() {
-        this.symbol = "/imgs/X.png";
+        this.symbol = "X.png";
         this.piece = Piece.X;
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="gui.Controllers.EndController" stylesheets="../css/style.css">
+            fx:controller="gui.Controllers.EndController" stylesheets="style.css">
     <children>
         <Label alignment="CENTER" prefWidth="600" layoutY="165.0" prefHeight="70.0" text="Chaos won!"
                textAlignment="CENTER">
@@ -15,6 +15,6 @@
             </font>
         </Label>
         <Button layoutX="274.0" layoutY="264.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay"
-                text="Play again" stylesheets="../css/style.css"/>
+                text="Play again" stylesheets="style.css"/>
     </children>
 </AnchorPane>
