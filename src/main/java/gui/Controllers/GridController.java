@@ -1,7 +1,5 @@
 package gui.Controllers;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.NumberBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,15 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import orderandchaos.Utils.Display;
-import orderandchaos.Game;
 import orderandchaos.Entities.Piece;
 import orderandchaos.Entities.Position;
+import orderandchaos.Game;
+import orderandchaos.Utils.Display;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +26,7 @@ public class GridController implements Initializable {
     @FXML
     public GridPane grid;
     RootController rootController;
+    boolean started;
 
     public void injectMainController(RootController rootController) {
         this.rootController = rootController;
@@ -45,7 +43,7 @@ public class GridController implements Initializable {
 //        grid.setVgap(8);
 //        grid.setHgap(8);
 //        grid.setAlignment(Pos.CENTER);
-
+        started = false;
         grid.setVgap(8);
         grid.setHgap(8);
         grid.setAlignment(Pos.CENTER);
@@ -57,6 +55,8 @@ public class GridController implements Initializable {
                 r.setStrokeWidth(3);
                 grid.addRow(row, r);
                 r.setOnMouseClicked(this::clickGrid);
+                r.setDisable(true);
+
             }
         }
     }
@@ -100,6 +100,8 @@ public class GridController implements Initializable {
         checkEndGame(position, source);
         rootController.updateTurn();
         source.setDisable(true);
+
+        this.grid.getChildren().forEach(c->c.setDisable(false));
     }
 
     public void checkEndGame(Position position, Node source){
