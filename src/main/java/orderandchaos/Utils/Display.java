@@ -9,7 +9,6 @@ import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -43,7 +42,7 @@ public class Display {
         Scanner myInput = new Scanner(System.in);
         String str = myInput.nextLine();
         StringTokenizer st = new StringTokenizer(str, " ,");
-        while (!(st.countTokens() == 2)) {
+        if (st.countTokens() != 2) {
             return askPosition();
         }
         String x_s = st.nextToken();
@@ -94,7 +93,7 @@ public class Display {
         Scanner myInput = new Scanner(System.in);
         String str = myInput.nextLine();
         StringTokenizer st = new StringTokenizer(str);
-        while (!(st.countTokens() == 2)) {
+        if (st.countTokens() != 2) {
             return insertPlayer1();
         }
         String name = st.nextToken();
@@ -118,8 +117,7 @@ public class Display {
     public String askRole() {
         System.out.println("Insert a valid role (Order or Chaos)!");
         Scanner input = new Scanner(System.in);
-        String role = input.next();
-        return role;
+        return input.next();
     }
 
     public Player findOrder(Player p1, Player p2) {

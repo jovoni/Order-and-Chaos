@@ -4,8 +4,6 @@ import orderandchaos.Entities.Player;
 import orderandchaos.Entities.Position;
 import orderandchaos.Utils.Display;
 
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {

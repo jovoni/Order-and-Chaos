@@ -22,7 +22,7 @@ public class Position implements Comparable<Position> {
     }
 
     public void printPosition() {
-        System.out.println(String.valueOf(this.x) + "," + String.valueOf(this.y));
+        System.out.printf("%d,%d%n", this.x, this.y);
     }
 
     @Override

@@ -81,8 +81,8 @@ public class GridController implements Initializable {
     @FXML
     private void clickGrid(MouseEvent event) {
         Node source = (Node) event.getSource();
-        Integer colIndex = grid.getColumnIndex(source);
-        Integer rowIndex = grid.getRowIndex(source);
+        Integer colIndex = GridPane.getColumnIndex(source);
+        Integer rowIndex = GridPane.getRowIndex(source);
         ImageView im = new ImageView(getSymbol());
         im.setFitHeight(50+3);
         im.setFitWidth(50+3);
@@ -110,35 +110,36 @@ public class GridController implements Initializable {
         if(getGame().getChaosWon()){
             FXMLLoader endLoader = new FXMLLoader();
             endLoader.setLocation(getClass().getResource("/ChaosWon.fxml"));
-            Parent endGame = null;
+            Parent endGame;
             try {
                 endGame = endLoader.load();
+                Scene endScene = new Scene(endGame);
+
+                Stage endStage = (Stage)source.getScene().getWindow();
+                endStage.setScene(endScene);
+                endStage.setResizable(false);
+                endStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Scene endScene = new Scene(endGame);
-
-            Stage endStage = (Stage)source.getScene().getWindow();
-            endStage.setScene(endScene);
-            endStage.setResizable(false);
-            endStage.show();
         }
 
         if(getGame().getOrderWon()){
             FXMLLoader endLoader = new FXMLLoader();
             endLoader.setLocation(getClass().getResource("/OrderWon.fxml"));
-            Parent endGame = null;
+            Parent endGame;
             try {
                 endGame = endLoader.load();
+                Scene endScene = new Scene(endGame);
+
+                Stage endStage = (Stage)source.getScene().getWindow();
+                endStage.setScene(endScene);
+                endStage.setResizable(false);
+                endStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Scene endScene = new Scene(endGame);
 
-            Stage endStage = (Stage)source.getScene().getWindow();
-            endStage.setScene(endScene);
-            endStage.setResizable(false);
-            endStage.show();
         }
     }
 }

@@ -19,41 +19,40 @@ public class StartController  implements Initializable {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Root.fxml"));
-        Parent root = null;
+        Parent root;
         try {
             root = loader.load();
+            Node node = (Node) mouseEvent.getSource();
+            ((Stage) node.getScene().getWindow()).close();
+
+            Scene scene = new Scene(root, 600, 600);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Order and Chaos");
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Node node = (Node) mouseEvent.getSource();
-        ((Stage) node.getScene().getWindow()).close();
-
-        Scene scene = new Scene(root, 600, 600);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setTitle("Order and Chaos");
-        stage.show();
     }
 
-    public void onMouseClickedRules(MouseEvent mouseEvent) {
+    public void onMouseClickedRules() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Rules.fxml"));
-        Parent root = null;
+        Parent root;
         try {
             root = loader.load();
+            Scene scene = new Scene(root, 600, 600);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Order and Chaos");
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Scene scene = new Scene(root, 600, 600);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setTitle("Order and Chaos");
-        stage.show();
     }
 
     @Override

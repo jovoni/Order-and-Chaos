@@ -26,7 +26,7 @@ public class RootController implements Initializable {
     private Display display;
     public Piece piece;
 
-    private Color darkGray = Color.rgb(147, 149, 152);
+    private final Color darkGray = Color.rgb(147, 149, 152);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
