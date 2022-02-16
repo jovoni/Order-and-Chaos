@@ -1,30 +1,26 @@
 package orderandchaos;
 
+import orderandchaos.Entities.Player;
 import orderandchaos.Entities.Position;
 import orderandchaos.Utils.Display;
-
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Order and Chaos!");
 
-        boolean start = false;
-        while (!start) {
-            System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game.");
-            Scanner input = new Scanner(System.in);
-            String i = input.next();
-            if (i.equals("RULE")) {
-                System.out.print("RULES OF THE GAME \n \n \n");
-            } else
-                start = true;
-        }
-
         Game game = new Game();
         Display display = new Display(game.board);
 
+        while(!display.insertStart());
+
+        Player p1 = display.insertPlayer1();
+        Player p2 = display.insertPlayer2(p1.getPlayerRole());
+        Player currentPlayer = display.findOrder(p1,p2);
+
         while (!game.chaosWon && !game.orderWon) {
+            display.displayPlayer(currentPlayer);
+            currentPlayer = display.changePlayer(currentPlayer,p1,p2);
             Position lastMove = game.makeMove();
             game.checkBoard(lastMove);
             display.printBoard();
@@ -37,3 +33,4 @@ public class Main {
         }
     }
 }
+

@@ -6,7 +6,6 @@ import orderandchaos.Entities.Piece;
 import orderandchaos.Entities.Position;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
