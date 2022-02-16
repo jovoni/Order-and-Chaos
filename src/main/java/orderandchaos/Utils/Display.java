@@ -9,7 +9,9 @@ import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 
+import java.util.Locale;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Display {
     private final Board board;
@@ -75,25 +77,49 @@ public class Display {
     public Boolean insertStart() {
         System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game.");
         Scanner input = new Scanner(System.in);
-        String i = input.next();
-        if (i.equals("RULE")) {
+        String i = input.next().toLowerCase();
+        if (i.equals("rule")) {
             System.out.print("RULES OF THE GAME \n \n \n");
             return insertStart();
         } else
             return true;
     }
 
-    public Player insertPlayer() {
+    public Player insertPlayer1() {
         System.out.println("Insert your name and your role (Order or Chaos)!");
         Scanner myInput = new Scanner(System.in);
-        myInput.useDelimiter("\\D");
-        String name = myInput.nextLine();
-        String role = myInput.nextLine();
+        String str = myInput.nextLine();
+        StringTokenizer st = new StringTokenizer(str);
+        while (!(st.countTokens() == 2)) {
+            return insertPlayer1();
+        }
+        String name = st.nextToken();
+        String role = st.nextToken().toLowerCase();
+        while (!(role.equals("order") || role.equals("chaos"))) {
+            role = askRole().toLowerCase();
+        }
         return new Player(name,role);
     }
 
+    public Player insertPlayer2(String other_role) {
+        String role = other_role.equals("order") ? "chaos" : "order";
+        System.out.printf("You will play as %s, insert your name!%n", role);
+        Scanner myInput = new Scanner(System.in);
+        String str = myInput.nextLine();
+        StringTokenizer st = new StringTokenizer(str);
+        String name = st.nextToken();
+        return new Player(name, role);
+    }
+
+    public String askRole() {
+        System.out.println("Insert a valid role (Order or Chaos)!");
+        Scanner input = new Scanner(System.in);
+        String role = input.next();
+        return role;
+    }
+
     public Player findOrder(Player p1, Player p2) {
-        if (p1.playerRole.equals("Order")){
+        if (p1.playerRole.equals("order")){
             return new Player(p1.playerName,p1.playerRole);
         }
         else{

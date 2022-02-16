@@ -8,4 +8,8 @@ public class Player {
         this.playerName = name;
         this.playerRole = role;
     }
+
+    public String getPlayerRole() {
+        return this.playerRole;
+    }
 }

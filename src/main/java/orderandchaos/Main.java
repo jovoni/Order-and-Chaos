@@ -16,8 +16,8 @@ public class Main {
 
         while(!display.insertStart());
 
-        Player p1 = display.insertPlayer();
-        Player p2 = display.insertPlayer();
+        Player p1 = display.insertPlayer1();
+        Player p2 = display.insertPlayer2(p1.getPlayerRole());
         Player currentPlayer = display.findOrder(p1,p2);
 
         while (!game.chaosWon && !game.orderWon) {
