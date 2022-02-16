@@ -1,5 +1,6 @@
 .grid {
     -fx-background-color: white;
+    -fx-font-family: "Roboto Slab";
 }
 
 .button {

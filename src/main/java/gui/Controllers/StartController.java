@@ -32,7 +32,7 @@ public class StartController  implements Initializable {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setTitle("Order and Chaos");
         stage.show();
     }
@@ -51,7 +51,9 @@ public class StartController  implements Initializable {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.setMinHeight(500);
+        stage.setMinWidth(600);
         stage.setTitle("Order and Chaos");
         stage.show();
     }
