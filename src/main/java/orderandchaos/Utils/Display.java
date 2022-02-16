@@ -41,9 +41,13 @@ public class Display {
     public Position askPosition() {
         System.out.println("Insert position as x,y");
         Scanner myInput = new Scanner(System.in);
-        myInput.useDelimiter("\\D");
-        String x_s = myInput.next();
-        String y_s = myInput.next();
+        String str = myInput.nextLine();
+        StringTokenizer st = new StringTokenizer(str, " ,");
+        while (!(st.countTokens() == 2)) {
+            return askPosition();
+        }
+        String x_s = st.nextToken();
+        String y_s = st.nextToken();
 
         try {
             int x = Integer.parseInt(x_s);
