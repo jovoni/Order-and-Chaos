@@ -4,6 +4,7 @@ import orderandchaos.Entities.Board;
 import orderandchaos.Entities.Cell;
 import orderandchaos.Entities.Piece;
 import orderandchaos.Entities.Position;
+import orderandchaos.Entities.Player;
 import orderandchaos.Exceptions.NonValidPieceException;
 import orderandchaos.Exceptions.NonValidPosException;
 import orderandchaos.Exceptions.PosAlreadyOccupiedException;
@@ -59,7 +60,6 @@ public class Display {
 
     public Piece askPiece() {
         System.out.println("Insert piece");
-
         Scanner myInput = new Scanner(System.in);
         String piece = myInput.next();
         try {
@@ -72,19 +72,43 @@ public class Display {
         }
     }
 
-//    public Player insertPlayer() {
-//        System.out.println("Insert your name and your role (Order or Chaos)!");
-//        Scanner myInput = new Scanner(System.in);
-//        myInput.useDelimiter("\\D");
-//
-//        String name1 = myInput.nextLine();
-//        String role1 = myInput.nextLine();
-//
-//        return new Player(name1,role1);
-//    }
-//
-//    public void displayTurn(Player currentPlayer){
-//        System.out.println(currentPlayer.playerName + "-" + currentPlayer.playerRole + " it's your turn!");
-//    }
+    public Boolean insertStart() {
+        System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game.");
+        Scanner input = new Scanner(System.in);
+        String i = input.next();
+        if (i.equals("RULE")) {
+            System.out.print("RULES OF THE GAME \n \n \n");
+            return insertStart();
+        } else
+            return true;
+    }
 
+    public Player insertPlayer() {
+        System.out.println("Insert your name and your role (Order or Chaos)!");
+        Scanner myInput = new Scanner(System.in);
+        myInput.useDelimiter("\\D");
+        String name = myInput.nextLine();
+        String role = myInput.nextLine();
+        return new Player(name,role);
+    }
+
+    public Player findOrder(Player p1, Player p2) {
+        if (p1.playerRole.equals("Order")){
+            return new Player(p1.playerName,p1.playerRole);
+        }
+        else{
+            return new Player(p2.playerName,p2.playerRole);
+        }
+    }
+
+    public void displayPlayer(Player currentPlayer){
+        System.out.println(currentPlayer.playerName + "-" + currentPlayer.playerRole + " it's your turn!");
+    }
+
+    public Player changePlayer(Player cP, Player p1, Player p2) {
+        if (cP.playerRole.equals(p1.playerRole)) {
+            return p2;
+        } else
+            return p1;
+    }
 }
