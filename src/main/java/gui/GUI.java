@@ -20,7 +20,9 @@ public class GUI extends Application {
         Scene scene = new Scene(root, 600, 600);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.setMinWidth(400);
+        stage.setMinHeight(400);
         stage.setTitle("Order and Chaos");
         stage.show();
     }
