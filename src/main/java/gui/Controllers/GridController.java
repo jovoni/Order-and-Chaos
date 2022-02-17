@@ -117,7 +117,9 @@ public class GridController implements Initializable {
 
                 Stage endStage = (Stage)source.getScene().getWindow();
                 endStage.setScene(endScene);
-                endStage.setResizable(false);
+                endStage.setResizable(true);
+                endStage.setMinWidth(400);
+                endStage.setMinHeight(400);
                 endStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -134,7 +136,9 @@ public class GridController implements Initializable {
 
                 Stage endStage = (Stage)source.getScene().getWindow();
                 endStage.setScene(endScene);
-                endStage.setResizable(false);
+                endStage.setResizable(true);
+                endStage.setMinWidth(400);
+                endStage.setMinHeight(400);
                 endStage.show();
             } catch (IOException e) {
                 e.printStackTrace();

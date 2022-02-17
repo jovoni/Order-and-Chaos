@@ -14,13 +14,13 @@
           text="Order and Chaos is a variant of the game tic-tac-toe on a 6×6 gameboard" GridPane.rowIndex="2" />
    <Label fx:id="rule2" alignment="CENTER" contentDisplay="CENTER" layoutY="200.0" prefHeight="33.0" prefWidth="600.0"
           text="The player Order strives to create a five-in-a-row of either Xs or Os" GridPane.rowIndex="3" />
-   <Label fx:id="rule5" alignment="CENTER" layoutY="240.0" prefWidth="600"
+   <Label fx:id="rule3" alignment="CENTER" layoutY="240.0" prefWidth="600"
           text="either vertically, horizontally, or diagonally" GridPane.rowIndex="4" />
-   <Label fx:id="rule3" alignment="CENTER" layoutY="280.0" prefWidth="600"
+   <Label fx:id="rule4" alignment="CENTER" layoutY="280.0" prefWidth="600"
           text="The opponent Chaos endeavors to prevent this" GridPane.rowIndex="5" />
-   <Label fx:id="rule4" alignment="CENTER" layoutY="320.0" prefWidth="600"
-          text="Order plays first, then turns alternate" GridPane.rowIndex="6" />
-   <Label fx:id="rule6" alignment="CENTER" layoutY="320.0" prefWidth="600" style="-fx-font-size: 15;"
+   <Label fx:id="rule5" alignment="CENTER" layoutY="320.0" prefWidth="600"
+          text="Order plays first, then turns alternate" GridPane.rowIndex="6" style="-fx-font-size: 16;"/>
+   <Label fx:id="rule6" alignment="CENTER" layoutY="320.0" prefWidth="600" style="-fx-font-size: 16;"
           text="Six-in-a-row does not qualify as a win" wrapText="true" GridPane.rowIndex="7" />
 
    <columnConstraints>

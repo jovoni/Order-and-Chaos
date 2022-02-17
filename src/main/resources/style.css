@@ -23,7 +23,7 @@
     -fx-font-size: 20;
 }
 
-#rule1, #rule2, #rule3, #rule4, #rule5{
+#rule1, #rule2, #rule3, #rule4, #rule5 #rule6{
     -fx-font-size: 16;
     -fx-border-style: hidden;
     -fx-alignment: center;

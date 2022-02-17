@@ -30,10 +30,13 @@ public class StartController  implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setResizable(true);
-            stage.setMinWidth(400);
-            stage.setMinHeight(400);
+            stage.setMinWidth(500);
+            stage.setMinHeight(550);
             stage.setTitle("Order and Chaos");
+//            Image applicationIcon = new Image(getClass().getResourceAsStream("/O.png"));
+//            stage.getIcons().add(applicationIcon);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
