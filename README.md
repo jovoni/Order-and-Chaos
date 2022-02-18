@@ -18,7 +18,7 @@ Six-in-a-row does not qualify as a win.
 - Java
 - Gradle
 - TravisCI
-- Github
+- JavaFX
 
 ## How to run
 
