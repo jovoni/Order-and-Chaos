@@ -39,3 +39,10 @@ javafx {
     version = '17.0.0.1'
     modules = ['javafx.controls', 'javafx.fxml']
 }
+
+task(runConsole, type: JavaExec) {
+    main = 'orderandchaos.Main'
+    standardInput = System.in
+    standardOutput = System.out
+    classpath = sourceSets.main.runtimeClasspath
+}
