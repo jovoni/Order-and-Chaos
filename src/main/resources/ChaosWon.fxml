@@ -9,7 +9,7 @@
 
 <GridPane prefHeight="343.0" prefWidth="363.0"
           xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="gui.Controllers.EndController">
+          stylesheets="@style.css" fx:controller="gui.Controllers.EndController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
@@ -21,7 +21,7 @@ fx:controller="gui.Controllers.EndController">
    <children>
       <Label alignment="CENTER" prefHeight="70.0" prefWidth="600" text="Chaos won!" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <font>
-            <Font name="Segoe UI Light" size="48.0" />
+            <Font size="48.0" />
          </font>
       </Label>
       <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay" stylesheets="style.css" text="Play again" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
