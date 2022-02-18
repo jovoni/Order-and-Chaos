@@ -95,7 +95,6 @@ public class GridController implements Initializable {
         getGame().getBoard().getCellAt(position).placePiece(getPiece());
 
         getGame().getBC().update(position);
-        getDisplay().printBoard();
 
         checkEndGame(position, source);
         rootController.updateTurn();

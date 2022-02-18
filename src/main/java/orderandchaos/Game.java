@@ -13,7 +13,7 @@ public class Game {
 
     public Game() {
         this.board = new Board();
-        this.display = new Display(board);
+        this.display = new Display(this.board);
         this.BlockChecker = new BlockChecker(this.board);
         this.WinChecker = new Win(this.board);
     }
