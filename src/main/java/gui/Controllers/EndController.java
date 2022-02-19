@@ -19,3 +19,4 @@ public class EndController {
         ((Stage) node.getScene().getWindow()).close();
     }
 }
+

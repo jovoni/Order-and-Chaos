@@ -112,7 +112,7 @@ public class GridController implements Initializable {
             Parent endGame;
             try {
                 endGame = endLoader.load();
-                Scene endScene = new Scene(endGame);
+                Scene endScene = new Scene(endGame, source.getScene().getWidth(), source.getScene().getHeight());
 
                 Stage endStage = (Stage)source.getScene().getWindow();
                 endStage.setScene(endScene);
@@ -131,7 +131,7 @@ public class GridController implements Initializable {
             Parent endGame;
             try {
                 endGame = endLoader.load();
-                Scene endScene = new Scene(endGame);
+                Scene endScene = new Scene(endGame,  source.getScene().getWidth(), source.getScene().getHeight());
 
                 Stage endStage = (Stage)source.getScene().getWindow();
                 endStage.setScene(endScene);

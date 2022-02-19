@@ -15,17 +15,17 @@ import java.util.ResourceBundle;
 
 public class StartController  implements Initializable {
 
-    public void onMouseClickedPlay(MouseEvent mouseEvent) {
+    public void onMouseClickedPlay(MouseEvent event) {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Root.fxml"));
         Parent root;
         try {
             root = loader.load();
-            Node node = (Node) mouseEvent.getSource();
+            Node node = (Node) event.getSource();
             ((Stage) node.getScene().getWindow()).close();
 
-            Scene scene = new Scene(root, 600, 600);
+            Scene scene = new Scene(root, node.getScene().getWidth(), node.getScene().getHeight());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -42,13 +42,13 @@ public class StartController  implements Initializable {
         }
     }
 
-    public void onMouseClickedRules() {
+    public void onMouseClickedRules(MouseEvent event) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/Rules.fxml"));
         Parent root;
         try {
             root = loader.load();
-            Scene scene = new Scene(root, 600, 600);
+            Scene scene = new Scene(root, ((Node)event.getSource()).getScene().getWidth(), ((Node)event.getSource()).getScene().getHeight());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
             Stage stage = new Stage();
             stage.setScene(scene);
