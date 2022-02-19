@@ -40,6 +40,7 @@ public class RootController implements Initializable {
     @FXML
     public void onMouseClickedCircle() {
         this.gridController.started = true;
+        this.gridController.grid.getChildren().forEach(c->c.setDisable(false));
         this.symbol = "O.png";
         this.piece = Piece.O;
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
