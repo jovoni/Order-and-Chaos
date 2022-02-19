@@ -83,7 +83,7 @@ public class GridController implements Initializable {
         Node source = (Node) event.getSource();
         Integer colIndex = GridPane.getColumnIndex(source);
         Integer rowIndex = GridPane.getRowIndex(source);
-        ImageView im = new ImageView(getSymbol());
+        ImageView im = new ImageView(String.valueOf(getClass().getResource(getSymbol())));
         im.setFitHeight(50+3);
         im.setFitWidth(50+3);
         im.setPreserveRatio(true);
@@ -108,7 +108,7 @@ public class GridController implements Initializable {
 
         if(getGame().getChaosWon()){
             FXMLLoader endLoader = new FXMLLoader();
-            endLoader.setLocation(getClass().getResource("/ChaosWon.fxml"));
+            endLoader.setLocation(getClass().getResource("/fxml/ChaosWon.fxml"));
             Parent endGame;
             try {
                 endGame = endLoader.load();
@@ -127,7 +127,7 @@ public class GridController implements Initializable {
 
         if(getGame().getOrderWon()){
             FXMLLoader endLoader = new FXMLLoader();
-            endLoader.setLocation(getClass().getResource("/OrderWon.fxml"));
+            endLoader.setLocation(getClass().getResource("/fxml/OrderWon.fxml"));
             Parent endGame;
             try {
                 endGame = endLoader.load();

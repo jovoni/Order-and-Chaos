@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="364.0" prefWidth="440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controllers.RootController">
+<GridPane prefHeight="364.0" prefWidth="440.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controllers.RootController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
@@ -21,11 +21,11 @@
       <RowConstraints percentHeight="20" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="81.0" prefWidth="419.0" stylesheets="@style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="81.0" prefWidth="419.0" stylesheets="@../css/style.css" text="Order and Chaos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
       <fx:include fx:id="grid" source="Grid.fxml" GridPane.rowIndex="2" />
       <HBox alignment="CENTER" prefHeight="98.0" prefWidth="274.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
          <children>
-            <Button fx:id="buttonX" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text="X" HBox.hgrow="ALWAYS">
+            <Button fx:id="buttonX" mnemonicParsing="false" onMouseClicked="#onMouseClickedCross" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/style.css" text="X" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="14.0" />
                </font>
@@ -35,7 +35,7 @@
             </Button>
              <Label fx:id="turn" alignment="CENTER" contentDisplay="CENTER" layoutY="558" prefHeight="18.0" prefWidth="359.0" text="Ciao" textAlignment="CENTER" HBox.hgrow="ALWAYS">
              </Label>
-            <Button fx:id="buttonO" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" prefHeight="40.0" prefWidth="40.0" stylesheets="@style.css" text="O" HBox.hgrow="ALWAYS">
+            <Button fx:id="buttonO" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#onMouseClickedCircle" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/style.css" text="O" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Corbel Light" size="14.0" />
                </font>

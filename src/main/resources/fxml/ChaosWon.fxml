@@ -9,7 +9,7 @@
 
 <GridPane prefHeight="343.0" prefWidth="363.0"
           xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-          stylesheets="@style.css" fx:controller="gui.Controllers.EndController">
+          stylesheets="@../css/style.css" fx:controller="gui.Controllers.EndController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
@@ -24,6 +24,6 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay" stylesheets="style.css" text="Play again" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+      <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedPlay" stylesheets="../css/style.css" text="Play again" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
    </children>
 </GridPane>

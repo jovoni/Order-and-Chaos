@@ -1,15 +1,15 @@
 # Order-and-Chaos
 
-Project for the software development exam.
-
-Order and Chaos is a variant of the game tic-tac-toe, played on a 6x6 gameboard. The player *Order* needs to create a five-in-a-row of either Xs or Os. The opponent *Chaos* needs to prevent this from happening.
+Project for the Software Development Exam @ UniTS. \
+This repository consists a Java implementation of 
+the board game [Order and Chaos](https://www.bing.com/search?q=order+and+chaos+wikipedia&qs=NWU&pq=order+and+chaos+wikipedia&sc=1-25&cvid=2145A6DEB3EF4BDCB356A085CC2A0311&FORM=QBRE&sp=1).
 
 ## Rules
 
 Order and Chaos is a variant of the game tic-tac-toe on a 6×6 gameboard.\
-The player Order strives to create a five-in-a-row of either Xs or Os,\
+The player Order strives to create a five-in-a-row of either Xs or Os, \
 either vertically, horizontally, or diagonally.\
-Chaos, on the other hand, needs to block all rows, columns and diagonals. \
+Chaos, on the other hand, endeavors to prevent this. \
 Order plays first, then turns alternate.\
 Six-in-a-row does not qualify as a win.
 
@@ -20,9 +20,9 @@ Six-in-a-row does not qualify as a win.
 - TravisCI
 - JavaFX
 
-## How to run
+## How to run it
 
-You can either play using the command line as well as with a graphical interface (recommended version).
+You can play using the command line as well as with a graphic user interface (recommended version).
 
 ### Unix-like systems
 
@@ -46,8 +46,8 @@ You can either play using the command line as well as with a graphical interface
 
 ## Authors
 
-- Elena Buscaroli
-- Benedetta Liberatori
-- Ciro Antonio Mami
-- Giovanni Santacatterina
-- Lucrezia Valeriani
+- [Elena Buscaroli](https://github.com/elena-buscaroli)
+- [Benedetta Liberatori](https://github.com/benedettaliberatori)
+- [Ciro Antonio Mami](https://github.com/ciroantoniomami)
+- [Giovanni Santacatterina](https://github.com/jovoni)
+- [Lucrezia Valeriani](https://github.com/valerianilucrezia)

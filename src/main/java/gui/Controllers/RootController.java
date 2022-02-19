@@ -41,7 +41,7 @@ public class RootController implements Initializable {
     public void onMouseClickedCircle() {
         this.gridController.started = true;
         this.gridController.grid.getChildren().forEach(c->c.setDisable(false));
-        this.symbol = "O.png";
+        this.symbol = "/imgs/O.png";
         this.piece = Piece.O;
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
@@ -51,7 +51,7 @@ public class RootController implements Initializable {
     public void onMouseClickedCross() {
         this.gridController.started = true;
         this.gridController.grid.getChildren().forEach(c->c.setDisable(false));
-        this.symbol = "X.png";
+        this.symbol = "/imgs/X.png";
         this.piece = Piece.X;
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
@@ -66,7 +66,7 @@ public class RootController implements Initializable {
         }
     }
 
-    public String getSymbol() {return symbol;}
+    public String getSymbol() {return this.symbol;}
 
     public Game getGame() {return game;}
 
