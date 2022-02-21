@@ -7,8 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import orderandchaos.*;
 import orderandchaos.Entities.Piece;
+import orderandchaos.Game;
 import orderandchaos.Utils.Display;
 
 import java.net.URL;
@@ -26,7 +26,7 @@ public class RootController implements Initializable {
     private Display display;
     public Piece piece;
 
-    private final Color darkGray = Color.rgb(147, 149, 152);
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,20 +39,28 @@ public class RootController implements Initializable {
 
     @FXML
     public void onMouseClickedCircle() {
-        this.gridController.started = true;
-        this.gridController.grid.getChildren().forEach(c->c.setDisable(false));
-        this.symbol = "/imgs/O.png";
-        this.piece = Piece.O;
-        this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
-        this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
+        putImage("/imgs/O.png");
+
     }
 
     @FXML
     public void onMouseClickedCross() {
+        putImage("/imgs/X.png");
+    }
+
+    private void putImage(String path){
+        if(!this.gridController.started){
+            this.gridController.grid.getChildren().forEach(c->c.setDisable(false));
+        }
         this.gridController.started = true;
-        this.gridController.grid.getChildren().forEach(c->c.setDisable(false));
-        this.symbol = "/imgs/X.png";
-        this.piece = Piece.X;
+        Color darkGray = Color.rgb(147, 149, 152);
+        this.symbol = path;
+        if(path.contains("X")){
+            this.piece = Piece.X;
+        }
+        else{
+            this.piece = Piece.O;
+        }
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
         this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
     }
@@ -68,9 +76,9 @@ public class RootController implements Initializable {
 
     public String getSymbol() {return this.symbol;}
 
-    public Game getGame() {return game;}
+    public Game getGame() {return this.game;}
 
-    public Piece getPiece() {return piece;}
+    public Piece getPiece() {return this.piece;}
 
-    public Display getDisplay() {return display;}
+    public Display getDisplay() {return this.display;}
 }

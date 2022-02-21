@@ -34,15 +34,6 @@ public class GridController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        double x = 100;
-//        double y = 10;
-//        AnchorPane.setRightAnchor(grid, x);
-//        AnchorPane.setTopAnchor(grid, y);
-//        AnchorPane.setLeftAnchor(grid, x);
-//        AnchorPane.setBottomAnchor(grid, y);
-//        grid.setVgap(8);
-//        grid.setHgap(8);
-//        grid.setAlignment(Pos.CENTER);
         started = false;
         grid.setVgap(8);
         grid.setHgap(8);
@@ -93,57 +84,42 @@ public class GridController implements Initializable {
 
         Position position = new Position(rowIndex + 1, colIndex + 1);
         getGame().getBoard().getCellAt(position).placePiece(getPiece());
-
         getGame().getBC().update(position);
-
         checkEndGame(position, source);
         rootController.updateTurn();
         source.setDisable(true);
-
         this.grid.getChildren().forEach(c->c.setDisable(false));
     }
 
-    public void checkEndGame(Position position, Node source){
+    public void checkEndGame(Position position, Node source) {
         getGame().checkBoard(position);
 
-        if(getGame().getChaosWon()){
-            FXMLLoader endLoader = new FXMLLoader();
-            endLoader.setLocation(getClass().getResource("/fxml/ChaosWon.fxml"));
-            Parent endGame;
-            try {
-                endGame = endLoader.load();
-                Scene endScene = new Scene(endGame, source.getScene().getWidth(), source.getScene().getHeight());
-
-                Stage endStage = (Stage)source.getScene().getWindow();
-                endStage.setScene(endScene);
-                endStage.setResizable(true);
-                endStage.setMinWidth(400);
-                endStage.setMinHeight(400);
-                endStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (getGame().getChaosWon()) {
+            loadingFXML(source, "/fxml/ChaosWon.fxml", 400, 400);
         }
 
-        if(getGame().getOrderWon()){
-            FXMLLoader endLoader = new FXMLLoader();
-            endLoader.setLocation(getClass().getResource("/fxml/OrderWon.fxml"));
-            Parent endGame;
-            try {
-                endGame = endLoader.load();
-                Scene endScene = new Scene(endGame,  source.getScene().getWidth(), source.getScene().getHeight());
-
-                Stage endStage = (Stage)source.getScene().getWindow();
-                endStage.setScene(endScene);
-                endStage.setResizable(true);
-                endStage.setMinWidth(400);
-                endStage.setMinHeight(400);
-                endStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        if (getGame().getOrderWon()) {
+            loadingFXML(source, "/fxml/OrderWon.fxml", 400, 400);
         }
+    }
+
+    private void loadingFXML(Node source, String path, int minHeight, int minWidth){
+        FXMLLoader endLoader = new FXMLLoader();
+        endLoader.setLocation(getClass().getResource(path));
+        Parent endGame;
+        try {
+            endGame = endLoader.load();
+            Scene endScene = new Scene(endGame,  source.getScene().getWidth(), source.getScene().getHeight());
+            Stage endStage = (Stage)source.getScene().getWindow();
+            endStage.setScene(endScene);
+            endStage.setResizable(true);
+            endStage.setMinWidth(minWidth);
+            endStage.setMinHeight(minHeight);
+            endStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
