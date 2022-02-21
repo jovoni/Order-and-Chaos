@@ -15,7 +15,7 @@ public class TestGame {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
-    void TestWinRow(int col){
+    void TestWinCol(int col){
         game.board.getCol(new Position(1,col)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
 
         assertTrue(game.WinChecker.checkWin(new Position(1,col)));
@@ -23,7 +23,7 @@ public class TestGame {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
-    void TestWinCol(int row){
+    void TestWinRow(int row){
         game.board.getRow(new Position(row,1)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
 
         assertTrue(game.WinChecker.checkWin(new Position(row,1)));
@@ -31,14 +31,22 @@ public class TestGame {
 
     @Test
     void TestWinDiag(){
-        game.board.getRow(new Position(1,1)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
+        game.board.getDiag(new Position(1,1)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
 
         assertTrue(game.WinChecker.checkWin(new Position(1,1)));
     }
 
+    @Test
+    void TestWinAntiDiag(){
+        game.board.getAntiDiag(new Position(1,6)).stream().limit(5).forEach(cell -> cell.placePiece(Piece.X));
+
+        assertTrue(game.WinChecker.checkWin(new Position(1,6)));
+    }
+
+
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
-    void TestNotWinRow(int col){
+    void TestNotWinCol(int col){
         game.board.getCol(new Position(1,col)).stream().limit(6).forEach(cell -> cell.placePiece(Piece.X));
 
         assertFalse(game.WinChecker.checkWin(new Position(1,col)));
@@ -46,10 +54,24 @@ public class TestGame {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
-    void TestNotWinCol(int row){
+    void TestNotWinRow(int row){
         game.board.getRow(new Position(row,1)).stream().limit(6).forEach(cell -> cell.placePiece(Piece.X));
 
         assertFalse(game.WinChecker.checkWin(new Position(row,1)));
+    }
+
+    @Test
+    void TestNotWinDiag(){
+        game.board.getDiag(new Position(1,1)).stream().limit(6).forEach(cell -> cell.placePiece(Piece.X));
+
+        assertFalse(game.WinChecker.checkWin(new Position(1,1)));
+    }
+
+    @Test
+    void TestNotWinAntiDiag(){
+        game.board.getAntiDiag(new Position(1,6)).stream().limit(6).forEach(cell -> cell.placePiece(Piece.X));
+
+        assertFalse(game.WinChecker.checkWin(new Position(1,6)));
     }
 
 
