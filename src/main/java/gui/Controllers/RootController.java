@@ -18,15 +18,13 @@ public class RootController implements Initializable {
 
     @FXML private GridController gridController;
     @FXML private Label turn;
-    @FXML private Button buttonX;
-    @FXML private Button buttonO;
+    @FXML public Button buttonX;
+    @FXML public Button buttonO;
 
     private Game game;
     private String symbol;
     private Display display;
     public Piece piece;
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,13 +37,16 @@ public class RootController implements Initializable {
 
     @FXML
     public void onMouseClickedCircle() {
+        Color black = Color.rgb(0, 0, 0);
         putImage("/imgs/O.png");
-
+        this.buttonO.setBorder(new Border(new BorderStroke(black, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
     }
 
     @FXML
     public void onMouseClickedCross() {
+        Color black = Color.rgb(0, 0, 0);
         putImage("/imgs/X.png");
+        this.buttonX.setBorder(new Border(new BorderStroke(black, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
     }
 
     private void putImage(String path){
@@ -57,12 +58,11 @@ public class RootController implements Initializable {
         this.symbol = path;
         if(path.contains("X")){
             this.piece = Piece.X;
-        }
-        else{
+        } else {
             this.piece = Piece.O;
         }
         this.buttonX.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
-        this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.NONE, new CornerRadii(5), BorderWidths.DEFAULT)));
+        this.buttonO.setBorder(new Border(new BorderStroke(darkGray, BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
     }
 
     @FXML

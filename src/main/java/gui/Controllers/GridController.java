@@ -47,7 +47,6 @@ public class GridController implements Initializable {
                 grid.addRow(row, r);
                 r.setOnMouseClicked(this::clickGrid);
                 r.setDisable(true);
-
             }
         }
     }
@@ -67,7 +66,6 @@ public class GridController implements Initializable {
     Display getDisplay() {
         return this.rootController.getDisplay();
     }
-
 
     @FXML
     private void clickGrid(MouseEvent event) {
@@ -118,7 +116,6 @@ public class GridController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
 
