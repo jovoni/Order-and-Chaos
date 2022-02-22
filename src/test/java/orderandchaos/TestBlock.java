@@ -1,13 +1,15 @@
 package orderandchaos;
 
+import orderandchaos.Entities.Cell;
 import orderandchaos.Entities.Piece;
 import orderandchaos.Entities.Position;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.TreeSet;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestBlock {
     private final Game game = new Game();
@@ -15,69 +17,55 @@ public class TestBlock {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void CheckBlockingRow(int row){
-
-        int BCSize = game.BlockChecker.size();
-        game.board.getCellAt(new Position(row,3)).placePiece(Piece.X);
-        game.BlockChecker.update(new Position(row,3));
-        game.board.getCellAt(new Position(row,4)).placePiece(Piece.O);
-        game.BlockChecker.update(new Position(row,4));
-
-
-        assertEquals(game.BlockChecker.size(), (BCSize -1));
+        Position pos1 = new Position(row,3);
+        Position pos2 = new Position(row,4);
+        game.board.getCellAt(pos1).placePiece(Piece.X);
+        game.BlockChecker.update(pos1);
+        game.board.getCellAt(pos2).placePiece(Piece.O);
+        game.BlockChecker.update(pos2);
+        assertFalse(game.BlockChecker.contains((TreeSet<Cell>) game.board.getRow(pos2)));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void CheckBlockingCol(int col){
+        Position pos1 = new Position(3,col);
+        Position pos2 = new Position(4,col);
+        game.board.getCellAt(pos1).placePiece(Piece.X);
+        game.BlockChecker.update(pos1);
+        game.board.getCellAt(pos2).placePiece(Piece.O);
+        game.BlockChecker.update(pos2);
+        assertFalse(game.BlockChecker.contains((TreeSet<Cell>) game.board.getCol(pos2)));
 
-        int BCSize = game.BlockChecker.size();
-        game.board.getCellAt(new Position(3,col)).placePiece(Piece.X);
-        game.BlockChecker.update(new Position(3,col));
-        game.board.getCellAt(new Position(4,col)).placePiece(Piece.O);
-        game.BlockChecker.update(new Position(4,col));
-
-
-        assertEquals(game.BlockChecker.size(), (BCSize -1));
     }
 
-    @Test
-    void CheckBlockingDiag(){
 
-        int BCSize = game.BlockChecker.size();
-        game.board.getCellAt(new Position(3,3)).placePiece(Piece.X);
-        game.BlockChecker.update(new Position(3,3));
-        game.board.getCellAt(new Position(4,4)).placePiece(Piece.O);
-        game.BlockChecker.update(new Position(4,4));
-
-
-        assertEquals(game.BlockChecker.size(), (BCSize -1));
+    @ParameterizedTest
+    @CsvSource({"3,3,4,4", "1,2,5,6"})
+    void CheckBlockingDiag(int row1, int col1, int row2, int col2){
+        Position pos1 = new Position(row1,col1);
+        Position pos2 = new Position(row2,col2);
+        game.board.getCellAt(pos1).placePiece(Piece.X);
+        game.BlockChecker.update(pos1);
+        game.board.getCellAt(pos2).placePiece(Piece.O);
+        game.BlockChecker.update(pos2);
+        assertFalse(game.BlockChecker.contains((TreeSet<Cell>) game.board.getDiag(pos2)));
     }
+
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void CheckBlockingLastAndFirstEquals(int col){
-
-        int BCSize = game.BlockChecker.size();
-        game.board.getCellAt(new Position(1,col)).placePiece(Piece.X);
-        game.BlockChecker.update(new Position(1,col));
-        game.board.getCellAt(new Position(6,col)).placePiece(Piece.X);
-        game.BlockChecker.update(new Position(6,col));
-
-        assertEquals(game.BlockChecker.size(), (BCSize -1));
+        Position pos1 = new Position(1,col);
+        Position pos2 = new Position(6,col);
+        game.board.getCellAt(pos1).placePiece(Piece.X);
+        game.BlockChecker.update(pos1);
+        game.board.getCellAt(pos2).placePiece(Piece.X);
+        game.BlockChecker.update(pos2);
+        assertFalse(game.BlockChecker.contains((TreeSet<Cell>) game.board.getCol(pos2)));
     }
 
-    @Test
-    void CheckBlockingShortDiag(){
 
-        int BCSize = game.BlockChecker.size();
-        game.board.getCellAt(new Position(1,2)).placePiece(Piece.X);
-        game.BlockChecker.update(new Position(1,2));
-        game.board.getCellAt(new Position(5,6)).placePiece(Piece.O);
-        game.BlockChecker.update(new Position(5,6));
-
-
-        assertEquals(game.BlockChecker.size(), (BCSize -1));
-    }
 
 
 }

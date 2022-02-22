@@ -35,7 +35,7 @@ public class Game {
         return this.board;
     }
 
-    public BlockChecker getBC(){
+    public BlockChecker getBoardChecker(){
         return this.BlockChecker;
     }
 

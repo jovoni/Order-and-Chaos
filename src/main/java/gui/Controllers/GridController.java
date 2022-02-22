@@ -84,11 +84,10 @@ public class GridController implements Initializable {
 
         Position position = new Position(rowIndex + 1, colIndex + 1);
         getGame().getBoard().getCellAt(position).placePiece(getPiece());
-        getGame().getBC().update(position);
+        getGame().getBoardChecker().update(position);
         checkEndGame(position, source);
         rootController.updateTurn();
         source.setDisable(true);
-        this.grid.getChildren().forEach(c->c.setDisable(false));
     }
 
     public void checkEndGame(Position position, Node source) {
