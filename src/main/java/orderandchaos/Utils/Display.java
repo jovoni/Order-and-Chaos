@@ -78,18 +78,23 @@ public class Display {
     }
 
     public Boolean insertStart() {
-        System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game.");
+        System.out.println("If you want to know the rules write rule, otherwise write play to start playing the game.");
         Scanner input = new Scanner(System.in);
         String i = input.next().toLowerCase();
         if (i.equals("rule")) {
-            System.out.print("RULES OF THE GAME \n \n \n");
+            System.out.print("RULES OF THE GAME\n");
+            System.out.print("Order and Chaos is a variant of the game tic-tac-toe on a 6×6 gameboard.\n" +
+                    "The player Order strives to create a five-in-a-row of either Xs or Os either vertically, horizontally, or diagonally.\n" +
+                    "The opponent Chaos endeavors to prevent this.\n" +
+                    "Order plays first, then turns alternate.\n" +
+                    "Six-in-a-row does not qualify as a win.\n\n");
             return insertStart();
         } else
             return true;
     }
 
     public Player insertPlayer1() {
-        System.out.println("Insert your name and your role (Order or Chaos)!");
+        System.out.println("Insert your name and your role (order or chaos)!");
         Scanner myInput = new Scanner(System.in);
         String str = myInput.nextLine();
         StringTokenizer st = new StringTokenizer(str);
