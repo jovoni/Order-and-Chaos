@@ -35,7 +35,7 @@ public class Main {
         if (game.orderWon) {
             System.out.println("Order you won!");
         } else {
-            System.out.println("Chaos you won, son of a bitch!");
+            System.out.println("Chaos you won!");
         }
     }
 }
