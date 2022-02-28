@@ -15,7 +15,7 @@ public class TestBlock {
     private final Game game = new Game();
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
+    @ValueSource(ints={1, 2, 3, 4, 5, 6})
     void CheckBlockingRow(int row){
         Position pos1 = new Position(row,3);
         Position pos2 = new Position(row,4);
@@ -27,7 +27,7 @@ public class TestBlock {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
+    @ValueSource(ints={1, 2, 3, 4, 5, 6})
     void CheckBlockingCol(int col){
         Position pos1 = new Position(3,col);
         Position pos2 = new Position(4,col);
@@ -36,9 +36,7 @@ public class TestBlock {
         game.board.getCellAt(pos2).placePiece(Piece.O);
         game.BlockChecker.update(pos2);
         assertFalse(game.BlockChecker.contains((TreeSet<Cell>) game.board.getCol(pos2)));
-
     }
-
 
     @ParameterizedTest
     @CsvSource({"3,3,4,4", "1,2,5,6"})
@@ -52,9 +50,8 @@ public class TestBlock {
         assertFalse(game.BlockChecker.contains((TreeSet<Cell>) game.board.getDiag(pos2)));
     }
 
-
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
+    @ValueSource(ints={1, 2, 3, 4, 5, 6})
     void CheckBlockingLastAndFirstEquals(int col){
         Position pos1 = new Position(1,col);
         Position pos2 = new Position(6,col);
@@ -64,8 +61,5 @@ public class TestBlock {
         game.BlockChecker.update(pos2);
         assertFalse(game.BlockChecker.contains((TreeSet<Cell>) game.board.getCol(pos2)));
     }
-
-
-
 
 }

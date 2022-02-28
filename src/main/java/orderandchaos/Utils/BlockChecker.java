@@ -54,6 +54,5 @@ public class BlockChecker extends HashSet<TreeSet<Cell>> {
         Piece lastPiece = set.stream().skip(5).findFirst().orElseThrow().getPiece();
         return firstPiece.equals(lastPiece) && !firstPiece.equals(Piece.Null);
     }
+
 }
-
-

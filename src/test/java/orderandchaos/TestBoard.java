@@ -4,10 +4,10 @@ import orderandchaos.Entities.Board;
 import orderandchaos.Entities.Cell;
 import orderandchaos.Entities.Piece;
 import orderandchaos.Entities.Position;
-import orderandchaos.Exceptions.PosAlreadyOccupiedException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Set;
@@ -23,16 +23,17 @@ public class TestBoard {
         assertEquals(board.size(), expected);
     }
 
-    @Test
-    void checkPiece() throws PosAlreadyOccupiedException {
+    @ParameterizedTest
+    @EnumSource(value=Piece.class, names={"X", "O"})
+    void checkPiece(Piece piece) {
         Position position = new Position(4, 4);
-        board.getCellAt(position).placePiece(Piece.X);
-        assertEquals(board.getCellAt(position).getPiece(), Piece.X);
+        board.getCellAt(position).placePiece(piece);
+        assertEquals(board.getCellAt(position).getPiece(), piece);
     }
 
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
-    void checkFullBoard(boolean full) throws PosAlreadyOccupiedException {
+    void checkFullBoard(boolean full) {
         if (full) {
             for (int i = 1; i <= 6; i++) {
                 for (int j = 1; j <= 6; j++) {
@@ -44,50 +45,32 @@ public class TestBoard {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void checkGetRow(int i) throws PosAlreadyOccupiedException {
+    @CsvSource({"1,X", "1,O", "2,X", "2,O", "6,X", "6,O"})
+    void checkGetRow(int i, Piece piece) {
         for (int j = 1; j <= 6; j++) {
-            board.getCellAt(new Position(i, j)).placePiece(Piece.X);
+            board.getCellAt(new Position(i, j)).placePiece(piece);
         }
         Set<Cell> row = board.getRow(new Position(i,1));
-        assertTrue(row.stream().allMatch(c->c.getPiece()==Piece.X));
+        assertTrue(row.stream().allMatch(c -> c.getPiece() == piece));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void checkGetCol(int i) throws PosAlreadyOccupiedException {
+    @CsvSource({"1,X", "1,O", "2,X", "2,O", "6,X", "6,O"})
+    void checkGetCol(int i, Piece piece) {
         for (int j = 1; j <= 6; j++) {
-            board.getCellAt(new Position(j, i)).placePiece(Piece.O);
+            board.getCellAt(new Position(j, i)).placePiece(piece);
         }
         Set<Cell> col = board.getCol(new Position(1,i));
-        assertTrue(col.stream().allMatch(c->c.getPiece() == Piece.O));
+        assertTrue(col.stream().allMatch(c->c.getPiece() == piece));
     }
 
     @ParameterizedTest
-    @CsvSource({"4,2,6","5,2,7","5,3,8","1,3,4"})
-    void checkGetAntiDiag(int x, int y, int sum) throws PosAlreadyOccupiedException {
-        for (int i = 1; i <= 6; i++) {
-            for (int j = 1; j <= 6; j++) {
-                if (i+j == sum) {
-                    board.getCellAt(new Position(i, j)).placePiece(Piece.X);
-                }
-            }
-        }
-        Set<Cell> antiDiag = board.getAntiDiag(new Position(x,y));
-        if (sum < 6 || sum > 8) {
-            assertNull(antiDiag);
-        } else {
-            assertTrue(antiDiag.stream().allMatch(c->c.getPiece() == Piece.X));
-        }
-    }
-
-    @ParameterizedTest
-    @CsvSource({"2,2,0","2,1,1","1,2,-1","6,3,3"})
-    void checkGetDiag(int x, int y, int diff) throws PosAlreadyOccupiedException {
+    @CsvSource({"2,2,0,X","2,2,0,O","2,1,1,X","2,1,1,O", "1,2,-1,X","1,2,-1,O"})
+    void checkGetDiag(int x, int y, int diff, Piece piece) {
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
                 if (i-j == diff) {
-                    board.getCellAt(new Position(i, j)).placePiece(Piece.X);
+                    board.getCellAt(new Position(i, j)).placePiece(piece);
                 }
             }
         }
@@ -95,7 +78,25 @@ public class TestBoard {
         if (diff < -1 || diff > 1) {
             assertNull(diag);
         } else {
-            assertTrue(diag.stream().allMatch(c->c.getPiece() == Piece.X));
+            assertTrue(diag.stream().allMatch(c->c.getPiece() == piece));
+        }
+    }
+
+    @ParameterizedTest
+    @CsvSource({"4,2,6,X", "4,2,6,O", "5,2,7,X", "5,2,7,O"})
+    void checkGetAntiDiag(int x, int y, int sum, Piece piece) {
+        for (int i = 1; i <= 6; i++) {
+            for (int j = 1; j <= 6; j++) {
+                if (i+j == sum) {
+                    board.getCellAt(new Position(i, j)).placePiece(piece);
+                }
+            }
+        }
+        Set<Cell> antiDiag = board.getAntiDiag(new Position(x,y));
+        if (sum < 6 || sum > 8) {
+            assertNull(antiDiag);
+        } else {
+            assertTrue(antiDiag.stream().allMatch(c->c.getPiece() == piece));
         }
     }
 

@@ -24,10 +24,10 @@ public class Display {
         for (int i = 1; i<=6; i++) {
             for (int j = 1; j <= 6; j++) {
                 Cell cell = board.getCellAt(new Position(i,j));
-                if(!cell.isOccupied()){
+                if(!cell.isOccupied()) {
                     System.out.print("|\t");
                 } else {
-                    System.out.print("| " + cell.getPiece() + " ");
+                    System.out.print("| " + cell.getPiece() + "\t");
                 }
                 if (j == 6) {
                     System.out.print("|");
@@ -89,8 +89,11 @@ public class Display {
                     "Order plays first, then turns alternate.\n" +
                     "Six-in-a-row does not qualify as a win.\n\n");
             return insertStart();
-        } else
+        } else if (i.equals("play")) {
             return true;
+        } else {
+            return this.insertStart();
+        }
     }
 
     public Player insertPlayer1() {
@@ -128,8 +131,7 @@ public class Display {
     public Player findOrder(Player p1, Player p2) {
         if (p1.playerRole.equals("order")){
             return new Player(p1.playerName,p1.playerRole);
-        }
-        else{
+        } else{
             return new Player(p2.playerName,p2.playerRole);
         }
     }

@@ -26,7 +26,7 @@ public class TestCell {
     }
 
     @ParameterizedTest
-    @EnumSource(value= Piece.class, names={"X", "O"})
+    @EnumSource(value=Piece.class, names={"X", "O"})
     void testPiece(Piece piece) {
         cell.placePiece(piece);
         assertEquals(piece, cell.getPiece());
