@@ -46,7 +46,7 @@ public class Display {
                 if(!cell.isOccupied()) {
                     System.out.print("|\t");
                 } else {
-                    System.out.print("| " + cell.getPiece() + "\t");
+                    System.out.print("|   " + cell.getPiece() + "\t");
                 }
                 if (j == 6) {
                     System.out.print("|");
@@ -97,7 +97,7 @@ public class Display {
     }
 
     public Boolean insertStart() {
-        System.out.println("If you want to know the rules write rule, otherwise write play to start playing the game.");
+        System.out.println("If you want to know the rules write RULE, otherwise write PLAY to start playing the game.");
         Scanner input = new Scanner(System.in);
         String i = input.next().toLowerCase();
         if (i.equals("rule")) {
