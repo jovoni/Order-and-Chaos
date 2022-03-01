@@ -14,8 +14,8 @@ import java.util.StringTokenizer;
 
 public class Display {
     private final Board board;
-    public Player player1;
-    public Player player2;
+    private Player player1;
+    private Player player2;
     public Player currentPlayer;
 
     public Display(Board board){
@@ -115,7 +115,7 @@ public class Display {
         }
     }
 
-    public Player insertPlayer1() {
+    private Player insertPlayer1() {
         System.out.println("Insert your name and your role (order or chaos)!");
         Scanner myInput = new Scanner(System.in);
         String str = myInput.nextLine();
@@ -131,7 +131,7 @@ public class Display {
         return new Player(name,role);
     }
 
-    public Player insertPlayer2(String other_role) {
+    private Player insertPlayer2(String other_role) {
         String role = other_role.equals("order") ? "chaos" : "order";
         System.out.printf("You will play as %s, insert your name!%n", role);
         Scanner myInput = new Scanner(System.in);
@@ -141,13 +141,13 @@ public class Display {
         return new Player(name, role);
     }
 
-    public String askRole() {
+    private String askRole() {
         System.out.println("Insert a valid role (Order or Chaos)!");
         Scanner input = new Scanner(System.in);
         return input.next();
     }
 
-    public Player findOrder(Player p1, Player p2) {
+    private Player findOrder(Player p1, Player p2) {
         if (p1.playerRole.equals("order")){
             return new Player(p1.playerName,p1.playerRole);
         } else{
@@ -159,10 +159,10 @@ public class Display {
         System.out.println(currentPlayer.playerName + "-" + currentPlayer.playerRole + " it's your turn!");
     }
 
-    public Player changePlayer(Player cP, Player p1, Player p2) {
-        if (cP.playerRole.equals(p1.playerRole)) {
-            return p2;
+    public void changePlayer() {
+        if (this.currentPlayer.equals(this.player1)) {
+            this.currentPlayer = this.player2;
         } else
-            return p1;
+            this.currentPlayer = this.player1;
     }
 }

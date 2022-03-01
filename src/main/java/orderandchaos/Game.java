@@ -32,7 +32,7 @@ public class Game {
     public void play(){
         while (!this.chaosWon && !this.orderWon) {
             this.display.displayPlayer(this.display.currentPlayer);
-            this.display.currentPlayer = this.display.changePlayer(this.display.currentPlayer,this.display.player1, this.display.player2);
+            this.display.changePlayer();
             Position lastMove = this.makeMove();
             this.checkBoard(lastMove);
             this.display.printBoard();
