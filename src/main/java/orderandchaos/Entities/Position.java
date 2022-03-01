@@ -21,10 +21,6 @@ public class Position implements Comparable<Position> {
         return this.x + this.y;
     }
 
-//    public void printPosition() {
-//        System.out.printf("%d,%d%n", this.x, this.y);
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

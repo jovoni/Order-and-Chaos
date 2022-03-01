@@ -18,14 +18,14 @@ public class TestBoard {
     private final Board board = new Board();
 
     @Test
-    void checkDimension() {
+    void testCheckDimension() {
         int expected = 36;
         assertEquals(board.size(), expected);
     }
 
     @ParameterizedTest
     @EnumSource(value=Piece.class, names={"X", "O"})
-    void checkPiece(Piece piece) {
+    void testCheckPiece(Piece piece) {
         Position position = new Position(4, 4);
         board.getCellAt(position).placePiece(piece);
         assertEquals(board.getCellAt(position).getPiece(), piece);
@@ -33,7 +33,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
-    void checkFullBoard(boolean full) {
+    void testCheckFullBoard(boolean full) {
         if (full) {
             for (int i = 1; i <= 6; i++) {
                 for (int j = 1; j <= 6; j++) {
@@ -46,7 +46,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @CsvSource({"1,X", "1,O", "2,X", "2,O", "6,X", "6,O"})
-    void checkGetRow(int i, Piece piece) {
+    void testCheckGetRow(int i, Piece piece) {
         for (int j = 1; j <= 6; j++) {
             board.getCellAt(new Position(i, j)).placePiece(piece);
         }
@@ -56,7 +56,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @CsvSource({"1,X", "1,O", "2,X", "2,O", "6,X", "6,O"})
-    void checkGetCol(int i, Piece piece) {
+    void testCheckGetCol(int i, Piece piece) {
         for (int j = 1; j <= 6; j++) {
             board.getCellAt(new Position(j, i)).placePiece(piece);
         }
@@ -66,7 +66,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @CsvSource({"2,2,0,X","2,2,0,O","2,1,1,X","2,1,1,O", "1,2,-1,X","1,2,-1,O"})
-    void checkGetDiag(int x, int y, int diff, Piece piece) {
+    void testCheckGetDiag(int x, int y, int diff, Piece piece) {
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
                 if (i-j == diff) {
@@ -84,7 +84,7 @@ public class TestBoard {
 
     @ParameterizedTest
     @CsvSource({"4,2,6,X", "4,2,6,O", "5,2,7,X", "5,2,7,O"})
-    void checkGetAntiDiag(int x, int y, int sum, Piece piece) {
+    void testCheckGetAntiDiag(int x, int y, int sum, Piece piece) {
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
                 if (i+j == sum) {

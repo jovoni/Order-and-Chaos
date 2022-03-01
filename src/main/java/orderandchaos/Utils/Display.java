@@ -150,7 +150,7 @@ public class Display {
     public Player findOrder(Player p1, Player p2) {
         if (p1.playerRole.equals("order")){
             return new Player(p1.playerName,p1.playerRole);
-        } else{
+        } else {
             return new Player(p2.playerName,p2.playerRole);
         }
     }

@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import orderandchaos.Entities.Piece;
 import orderandchaos.Entities.Position;
 import orderandchaos.Game;
-import orderandchaos.Utils.Display;
 
 import java.io.IOException;
 import java.net.URL;
@@ -61,10 +60,6 @@ public class GridController implements Initializable {
 
     Piece getPiece() {
         return this.rootController.getPiece();
-    }
-
-    Display getDisplay() {
-        return this.rootController.getDisplay();
     }
 
     @FXML
