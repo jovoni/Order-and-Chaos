@@ -14,9 +14,28 @@ import java.util.StringTokenizer;
 
 public class Display {
     private final Board board;
+    public Player player1;
+    public Player player2;
+    public Player currentPlayer;
 
     public Display(Board board){
         this.board = board;
+    }
+
+    public void printWelcome() {
+        System.out.println("Welcome to \n");
+        System.out.println("   ____           __                             __   ________                    \n" +
+                "  / __ \\_________/ /__  _____   ____ _____  ____/ /  / ____/ /_  ____ _____  _____\n" +
+                " / / / / ___/ __  / _ \\/ ___/  / __ `/ __ \\/ __  /  / /   / __ \\/ __ `/ __ \\/ ___/\n" +
+                "/ /_/ / /  / /_/ /  __/ /     / /_/ / / / / /_/ /  / /___/ / / / /_/ / /_/ (__  ) \n" +
+                "\\____/_/   \\__,_/\\___/_/      \\__,_/_/ /_/\\__,_/   \\____/_/ /_/\\__,_/\\____/____/  \n" +
+                "                                                                                  ");
+    }
+
+    public void initPlayers() {
+        this.player1 = this.insertPlayer1();
+        this.player2 = this.insertPlayer2(this.player1.getPlayerRole());
+        this.currentPlayer = this.findOrder(this.player1, this.player2);
     }
 
     public void printBoard(){
