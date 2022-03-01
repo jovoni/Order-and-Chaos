@@ -2,7 +2,6 @@ package orderandchaos;
 
 import orderandchaos.Entities.Player;
 import orderandchaos.Entities.Position;
-import orderandchaos.Utils.Display;
 
 public class Main {
 
@@ -16,20 +15,19 @@ public class Main {
                 "                                                                                  ");
 
         Game game = new Game();
-        Display display = new Display(game.board);
 
-        while(!display.insertStart());
+        while(!game.display.insertStart());
 
-        Player p1 = display.insertPlayer1();
-        Player p2 = display.insertPlayer2(p1.getPlayerRole());
-        Player currentPlayer = display.findOrder(p1,p2);
+        Player p1 = game.display.insertPlayer1();
+        Player p2 = game.display.insertPlayer2(p1.getPlayerRole());
+        Player currentPlayer = game.display.findOrder(p1,p2);
 
         while (!game.chaosWon && !game.orderWon) {
-            display.displayPlayer(currentPlayer);
-            currentPlayer = display.changePlayer(currentPlayer,p1,p2);
+            game.display.displayPlayer(currentPlayer);
+            currentPlayer = game.display.changePlayer(currentPlayer,p1,p2);
             Position lastMove = game.makeMove();
             game.checkBoard(lastMove);
-            display.printBoard();
+            game.display.printBoard();
         }
 
         if (game.orderWon) {
