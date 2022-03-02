@@ -7,8 +7,7 @@ the board game [Order and Chaos](https://www.bing.com/search?q=order+and+chaos+w
 ## Rules
 
 Order and Chaos is a variant of the game tic-tac-toe on a 6×6 gameboard.\
-The player Order strives to create a five-in-a-row of either Xs or Os, \
-either vertically, horizontally, or diagonally.\
+The player Order strives to create a five-in-a-row of either Xs or Os, either vertically, horizontally, or diagonally.\
 Chaos, on the other hand, endeavors to prevent this. \
 Order plays first, then turns alternate.\
 Six-in-a-row does not qualify as a win.
